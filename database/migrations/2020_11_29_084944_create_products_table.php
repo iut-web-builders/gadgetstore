@@ -22,9 +22,9 @@ class CreateProductsTable extends Migration
             $table->unsignedInteger('price');
             $table->text('description');
             //Todo: Earned Points
-            $table->string('brand');
+            $table->unsignedInteger('brand_id');
 
-            $table->index('brand');
+            $table->index('brand_id');
         });
     }
 
