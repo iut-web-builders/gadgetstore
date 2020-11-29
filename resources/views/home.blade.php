@@ -16,7 +16,7 @@
                     </div>
 
 
-                        <a href="/p/create">Add new product</a>
+                        <a href="/products/create">Add new product</a>
 
                 </div>
                <!-- @can('update',$user->profile)-->
