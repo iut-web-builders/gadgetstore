@@ -17,7 +17,8 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            //Todo: product type
+            //Todo: product
+            //Todo:Image
             $table->unsignedInteger('price');
             $table->text('description');
             //Todo: Earned Points
