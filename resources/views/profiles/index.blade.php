@@ -2,24 +2,45 @@
 
 @section('content')
     <div class="container">
-        @foreach($products as $product)
-            <div class="row">
-                <div class="col-6 offset-3 pt-2 pb-4">
-
-
-            <span class="font-weight-bold">
-                    <span class="text-dark">{{$product->name}}</span>
-            </span>
-                    <div>{{$product->description}}</div>
-                    <div>{{$product->price}}</div>
-                </div>
+        <div class="row">
+            <div class="col-3 p-5">
+                <img src="{{$user->profile->profileImage()}}" class="rounded-circle w-100" >
             </div>
 
-        @endforeach
-        <div class="row">
-            <div class="d-flex  col-12 justify-content-center">
-                {{$posts->links('vendor.pagination.custom') }}
+            <div class="col-9 pt-5">
+                <div class="d-flex align-items-baseline justify-content-between">
+
+                    <div class="d-flex align-items-center pb-3">
+                        <div class="h4">{{$user->username}}</div>
+                        <follow-button user-id = "{{$user->id}}" follows="{{$follows}}"></follow-button>
+                    </div>
+
+                    @can('update',$user->profile)
+                        <a href="/p/create">Add new post</a>
+                    @endcan
+                </div>
+                @can('update',$user->profile)
+                    <a href="/profile/{{$user->id}}/edit">Edit Profile</a>
+                @endcan
+                <div class="d-flex">
+                    <div class="pr-3"><strong>{{$user->posts->count()}}</strong> posts</div>
+                    <div class="pr-3"><strong>{{$user->profile->followers->count()}}</strong> followers</div>
+                    <div class="pr-3"><strong>{{$user->following->count()}}</strong> following</div>
+                </div>
+                <div class="pt-4 font-weight-bold">{{$user->profile->title}}</div>
+                <div>{{$user->profile->description}}</div>
+                <div> <a href="#">{{$user->profile->url}}</a></div>
             </div>
         </div>
+        <div class="row pt-5" >
+            @foreach($user->posts as $post)
+                <div class="col-4  pb-3">
+                    <a href="/p/{{$post->id}}">
+                        <img src="/storage/{{$post->image}}" alt="Image" class="w-100">
+                    </a></div>
+
+            @endforeach
+        </div>
+
     </div>
 @endsection
