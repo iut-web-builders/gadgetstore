@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,8 @@ Route::get('/', function () {
 Route::get('/index',function (){
     return view('gadgetstore');
 });
+
+Route::resource('/products',ProductsController::class);
 
 Auth::routes();
 

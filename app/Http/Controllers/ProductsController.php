@@ -35,18 +35,25 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validationTemplate = [
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['max:255'],
+            'price' => ['required', 'numeric','gte:0'],
+        ];
+        $data = $request->validate($validationTemplate);
+        auth()->user()->products()->create(compact($data));
+        return  redirect('/profile/'. auth()->user()->id);
     }
 
     /**
      * Display the specified resource.
-     *
-     * @param  \App\Models\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(int $id)
     {
         //
+        return view('home');
     }
 
     /**
