@@ -47,8 +47,9 @@
                         </li>
                         <li class="nav-item dropdown"> <a href="#" class="p-2 nav-link dropdown-toggle" data-toggle="dropdown">Brands</a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Dashboard</a>
-                                <a class="dropdown-item" href="#">Resell</a>
+                                @foreach(\App\Models\Brand::all() as $brand)
+                                    <a class="dropdown-item" href="#">{{$brand->name}}</a>
+                                @endforeach
                             </div>
 
                         </li>

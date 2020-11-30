@@ -45,8 +45,10 @@ class ProductsController extends Controller
         $data = $request->validate($validationTemplate);
         $imagePath = request('image')->store('images','public');
         $data['image'] = $imagePath;
+        $data['point'] = $data['price']/10;
+     //   dd($data);
 
-        auth()->user()->products()->create(compact('data'));
+        auth()->user()->products()->create($data);
         return  redirect('/home');
     }
 

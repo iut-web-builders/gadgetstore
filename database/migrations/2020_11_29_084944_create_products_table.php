@@ -17,15 +17,15 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            //Todo: product
-            //Todo:Image
+
+            $table->string('image');
             $table->unsignedInteger('price');
             $table->text('description');
-            //Todo: Earned Points
-            $table->unsignedInteger('brand_id');
+            $table->unsignedInteger('point');
+            $table->string('brand');
+
             $table->unsignedInteger('user_id');
 
-            $table->index('brand_id');
             $table->index('user_id');
         });
     }
