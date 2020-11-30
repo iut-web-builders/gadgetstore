@@ -40,9 +40,12 @@ class ProductsController extends Controller
             'description' => ['max:255'],
             'price' => ['required', 'numeric','gte:0'],
             'brand'=> ['max:255'],
-
+            'image' => ['image'],
         ];
         $data = $request->validate($validationTemplate);
+        $imagePath = request('image')->store('images','public');
+        $data['image'] = $imagePath;
+
         auth()->user()->products()->create(compact('data'));
         return  redirect('/home');
     }
