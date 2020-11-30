@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->unsignedInteger('point');
             $table->string('brand');
+            $table->string('category');
 
             $table->unsignedInteger('user_id');
 

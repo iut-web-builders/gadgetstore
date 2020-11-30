@@ -39,7 +39,8 @@ class ProductsController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'description' => ['max:255'],
             'price' => ['required', 'numeric','gte:0'],
-            'brand'=> ['max:255'],
+            'brand'=> ['max:50'],
+            'category'=>['max:50'],
             'image' => ['image'],
         ];
         $data = $request->validate($validationTemplate);

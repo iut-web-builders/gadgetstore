@@ -12,11 +12,11 @@ class Product extends Model
     protected $guarded=[];
 
     public function brand(){
-        return $this->belongsTo(Brand::class,'name');
+        return $this->belongsTo(Brand::class,'name','brand');
     }
 
     public function category(){
-        return $this->belongsTo(Category::class,'name');
+        return $this->belongsTo(Category::class,'name','category');
     }
 
 

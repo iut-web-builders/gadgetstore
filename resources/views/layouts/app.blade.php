@@ -41,8 +41,9 @@
                     <ul class="navbar-nav mr-auto " >
                         <li class="nav-item dropdown"> <a href="#" class="p-2 nav-link dropdown-toggle" data-toggle="dropdown">Categories</a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Dashboard</a>
-                                <a class="dropdown-item" href="#">Resell</a>
+                                @foreach(\App\Models\Category::all() as $category)
+                                    <a class="dropdown-item" href="#">{{$category->name}}</a>
+                                @endforeach
                             </div>
                         </li>
                         <li class="nav-item dropdown"> <a href="#" class="p-2 nav-link dropdown-toggle" data-toggle="dropdown">Brands</a>
@@ -77,7 +78,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Dashboard</a>
+                                    <a class="dropdown-item" href="/home">Profile</a>
                                     <a class="dropdown-item" href="#">Resell</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
