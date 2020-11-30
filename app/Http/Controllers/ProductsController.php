@@ -39,10 +39,12 @@ class ProductsController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'description' => ['max:255'],
             'price' => ['required', 'numeric','gte:0'],
+            'brand'=> ['max:255'],
+
         ];
         $data = $request->validate($validationTemplate);
-        auth()->user()->products()->create(compact($data));
-        return  redirect('/profile/'. auth()->user()->id);
+        auth()->user()->products()->create(compact('data'));
+        return  redirect('/home');
     }
 
     /**
