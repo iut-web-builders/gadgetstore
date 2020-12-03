@@ -35,7 +35,7 @@ Auth::routes();
 
 Route::get('/login/mod',[LoginController::class,'showModLoginForm']);
 Route::get('/login/customer', [LoginController::class,'showCustomerLoginForm']);
-Route::get('/register/mod', [RegisterController::class,'showModRegisterForm']);
+Route::get('/register/mod', [RegisterController::class,'showModRegistrationForm']);
 Route::get('/register/customer', [RegisterController::class,'showCustomerRegisterForm']);
 
 Route::post('/login/mod', [LoginController::class,'modLogin']);
