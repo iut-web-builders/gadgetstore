@@ -1,12 +1,10 @@
 .mainProduct{
     margin-right: 10px;
     margin-bottom: 10px;
-    width: 200px;
-    height: 200px;
-    background-image: url('./image/sample.jpg');
     background-size: cover;
     position: relative;
-    min-height: max-content;
+    height: 200px;
+    width: 200px;
 
 }
 
@@ -19,7 +17,7 @@
     opacity: 70%;
     color: white;
     padding:  2px;
-
+    color: white;
 
 }
 

@@ -12,40 +12,31 @@
 
 
 <div class="row">
-    <div class="leftcolumn">
-        <div>
-            <ol  style="display: flex; flex-wrap:wrap; list-style:none">
+    <div>
+        <div class="row">
+            <ol class="d-flex">
 
+                @foreach(\App\Models\Product::all() as $product)
 
-                <li class="mainProduct">
-                    <div >
-                        <div class= "shortDescription">
-                            <h4> A product</h4>
-                            <h5> Tk. 500</h5>
+                <li style="list-style-type: none">
+                    <div class="pr-4">
+
+                        <div >
+                        <img src="storage/{{$product->image}}" style="width: 200px; height: 200px; overflow: hidden; position:relative" >
+                        </div>
+                        <div>
+                            <div>{{$product->name}}</div>
+                            <div>Tk. {{$product->price}}</div>
                         </div>
                     </div>
                 </li>
 
-
-
+                @endforeach
             </ol>
         </div>
     </div>
-    <div class="rightcolumn">
-
-        <div class="card">
-            <h3>Popular!</h3>
-            <div class="fakeimg" onclick="window.location = 'product.html'"><p>Product</p></div>
-            <div class="fakeimg" onclick="window.location = 'product.html'"><p>Product</p></div>
-            <div class="fakeimg" onclick="window.location = 'product.html'"><p>Product</p></div>
-        </div>
-
-    </div>
 </div>
 
-<div class="footer">
-    <h2>~Have a nice day!~</h2>
-</div>
 
 </body>
 @endsection

@@ -21,15 +21,18 @@
 </head>
 <body>
     <div id="app">
+        <div style="color: white">
+        <a href="/">
         <div class="header bg-dark">
-            <h1>Gadget Seller</h1>
-            <p>Find your gadgets</p>
+            <h1>Gadget Store</h1>
+            <p>Find and your gadgets, sell your gadgets</p>
         </div>
-
+        </a>
+        </div>
         <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm  ">
             <div class="container">
 
-                <a class="navbar-brand" href="{{ url('/index') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     GadgetStore
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
