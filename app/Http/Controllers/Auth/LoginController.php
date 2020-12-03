@@ -52,14 +52,10 @@ class LoginController extends Controller
     }
 
     public function adminLogin(Request $request){
-        $this->validate($request,[
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
+        $this->validateRequestForm($request);
 
         if(Auth::guard('mod')->attempt(
-            ['email' => $request->email,
-            'password' => $request->password, $request->get('remember')])){
+            $this->getattempt($request))){
             return redirect()->intended('/admin');
         }
 
@@ -67,7 +63,36 @@ class LoginController extends Controller
 
     }
 
+    public function customerLogin(Request $request){
+        $this->validateRequestForm($request);
+        if(Auth::guard('writer')->attempt(
+            $this->getattempt($request))){
+            return redirect()->intended('/mod');
+        }
+        return back()->withInput($request->only('email','remember'));
+    }
 
+    /**
+     * @param Request $request
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function validateRequestForm(Request $request): void
+    {
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return array
+     */
+    public function getattempt(Request $request): array
+    {
+        return ['email' => $request->email,
+            'password' => $request->password, $request->get('remember')];
+    }
 
 
 }
