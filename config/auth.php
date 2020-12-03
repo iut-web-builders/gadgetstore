@@ -46,6 +46,18 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'mod' => [
+            'driver' => 'session',
+            'provider' => 'mods'
+        ],
+
+        'customer' => [
+            'driver' => 'session',
+            'provider' => 'customers'
+        ]
+
+
     ],
 
     /*
@@ -70,6 +82,18 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+
+        'mods' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Mod::class,
+        ],
+
+        'customers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Customer::class,
+        ]
+
+
 
         // 'users' => [
         //     'driver' => 'database',
