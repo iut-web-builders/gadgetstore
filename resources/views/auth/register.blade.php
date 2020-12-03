@@ -8,11 +8,14 @@
                 <div class="card-header">{{isset($url)? ucwords($url):''}}{{ __('Register') }}</div>
 
                 <div class="card-body">
+                    <form method="POST" action=
                     @isset($url)
-                     <form method="POST" action="{{ url('register/$url') }}">
-                     @else
-                     <form method="POST" action="{{ route('register') }}">
+                        "{{ url('register/'.$url) }}"
+                    @else
+                        "{{ route('register') }}"
+
                     @endisset
+                    >
                         @csrf
 
                         <div class="form-group row">
@@ -72,7 +75,7 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+
                 </div>
             </div>
         </div>
