@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
+use App\Models\Mod;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -39,6 +42,8 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $this->middleware('guest:mod');
+        $this->middleware('guest:customer');
     }
 
     /**
@@ -72,4 +77,42 @@ class RegisterController extends Controller
         ]);
 
     }
+
+    public function showModRegistrationForm()
+    {
+        return view('auth.register', ['url' => 'mod']);
+    }
+
+    public function showCustomerRegistrationForm()
+    {
+        return view('auth.register', ['url' => 'customer']);
+    }
+
+    protected function createMod(Request $request )
+    {
+        $this->validator($request->all())->validate();
+        $mod = Mod::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+
+        ]);
+
+
+        return redirect()->intended('login/mod');
+    }
+
+    protected function  createCustomer(Request  $request){
+        $this->validator($request->all())->validate();
+        $customer = Customer::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+
+        return redirect()->intended('login/customer');
+
+    }
+
+
 }

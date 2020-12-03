@@ -12,6 +12,7 @@ class Mod extends Authenticatable
     use HasFactory;
     use Notifiable;
 
+
     protected $guard = 'mod';
 
     protected $fillable = [
