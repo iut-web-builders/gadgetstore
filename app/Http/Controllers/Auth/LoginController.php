@@ -55,7 +55,7 @@ class LoginController extends Controller
         $this->validateRequestForm($request);
 
         if(Auth::guard('mod')->attempt(
-            $this->getattempt($request))){
+            $this->getAttempt($request))){
             return redirect()->intended('/admin');
         }
 
@@ -66,7 +66,7 @@ class LoginController extends Controller
     public function customerLogin(Request $request){
         $this->validateRequestForm($request);
         if(Auth::guard('writer')->attempt(
-            $this->getattempt($request))){
+            $this->getAttempt($request))){
             return redirect()->intended('/mod');
         }
         return back()->withInput($request->only('email','remember'));
@@ -88,7 +88,7 @@ class LoginController extends Controller
      * @param Request $request
      * @return array
      */
-    public function getattempt(Request $request): array
+    public function getAttempt(Request $request): array
     {
         return ['email' => $request->email,
             'password' => $request->password, $request->get('remember')];
