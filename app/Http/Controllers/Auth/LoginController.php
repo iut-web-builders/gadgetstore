@@ -40,7 +40,7 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
         $this->middleware('guest:mod')->except('logout');
-        $this->middleware('guest:writer')->except('logout');
+        $this->middleware('guest:customer')->except('logout');
     }
 
     public function showModLoginForm(){
@@ -51,12 +51,12 @@ class LoginController extends Controller
         return view('auth.login', ['url' => 'customer']);
     }
 
-    public function adminLogin(Request $request){
+    public function modLogin(Request $request){
         $this->validateRequestForm($request);
 
         if(Auth::guard('mod')->attempt(
             $this->getAttempt($request))){
-            return redirect()->intended('/admin');
+            return redirect()->intended('/mod');
         }
 
         return back()->withInput($request->only('email','remember'));
@@ -65,9 +65,9 @@ class LoginController extends Controller
 
     public function customerLogin(Request $request){
         $this->validateRequestForm($request);
-        if(Auth::guard('writer')->attempt(
+        if(Auth::guard('customer')->attempt(
             $this->getAttempt($request))){
-            return redirect()->intended('/mod');
+            return redirect()->intended('/customer');
         }
         return back()->withInput($request->only('email','remember'));
     }
