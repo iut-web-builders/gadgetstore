@@ -91,7 +91,9 @@ class LoginController extends Controller
     public function getAttempt(Request $request): array
     {
         return ['email' => $request->email,
-            'password' => $request->password, $request->get('remember')];
+            'password' => $request->password,
+            'remember_token' => $request->get('remember')
+        ];
     }
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -33,5 +34,19 @@ class Handler extends ExceptionHandler
     public function register()
     {
         //
+    }
+
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        if ($request->expectsJson()) {
+            return response()->json(['error' => 'Unauthenticated.'], 401);
+        }
+        if ($request->is('mod') || $request->is('mod/*')) {
+            return redirect()->guest('/login/mod');
+        }
+        if ($request->is('customer') || $request->is('customer/*')) {
+            return redirect()->guest('/login/customer');
+        }
+        return redirect()->guest(route('login'));
     }
 }
