@@ -43,5 +43,5 @@ Route::post('/register/mod', [RegisterController::class,'createMod']);
 
 
 //Route::view('/home', 'home')->middleware('auth');
-Route::view('/mod', 'mod');
+Route::view('/mod', 'mod')->middleware('auth');
 
