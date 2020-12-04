@@ -10,7 +10,7 @@
                     <div class="card-header">Dashboard</div>
 
                     <div class="card-body">
-                        Hi there {{auth()->user()->name}}
+                        Hi there {{Auth::guard('mod')->user()->name}}
                     </div>
                 </div>
             </div>
