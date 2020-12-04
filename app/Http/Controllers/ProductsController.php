@@ -55,13 +55,12 @@ class ProductsController extends Controller
 
     /**
      * Display the specified resource.
-     * @param  int  $id
+     * @param  Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(int $id)
+    public function show(Product $product)
     {
-        //
-        return view('home');
+        return view('products/show',compact('product'));
     }
 
     /**
