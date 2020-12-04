@@ -52,10 +52,6 @@ return [
             'provider' => 'mods'
         ],
 
-        'customer' => [
-            'driver' => 'session',
-            'provider' => 'customers'
-        ]
 
 
     ],
@@ -88,10 +84,6 @@ return [
             'model' => App\Models\Mod::class,
         ],
 
-        'customers' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Customer::class,
-        ]
 
 
 
