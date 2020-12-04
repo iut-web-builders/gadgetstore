@@ -43,7 +43,6 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
         $this->middleware('guest:mod');
-        $this->middleware('guest:customer');
     }
 
     /**
@@ -83,10 +82,7 @@ class RegisterController extends Controller
         return view('auth.register', ['url' => 'mod']);
     }
 
-    public function showCustomerRegistrationForm()
-    {
-        return view('auth.register', ['url' => 'customer']);
-    }
+
 
     protected function createMod(Request $request )
     {
@@ -102,17 +98,7 @@ class RegisterController extends Controller
         return redirect()->intended('login/mod');
     }
 
-    protected function  createCustomer(Request  $request){
-        $this->validator($request->all())->validate();
-        $customer = Customer::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
-        ]);
 
-        return redirect()->intended('login/customer');
-
-    }
 
 
 }
