@@ -33,10 +33,10 @@
             </div>
         </div>
         <div class="row pt-5" >
-            @foreach($user->posts as $post)
+            @foreach($user->posts as $product)
                 <div class="col-4  pb-3">
-                    <a href="/p/{{$post->id}}">
-                        <img src="/storage/{{$post->image}}" alt="Image" class="w-100">
+                    <a href="/products/{{$product->id}}">
+                        <img src="/storage/{{$product->image}}" alt="Image" class="w-100">
                     </a></div>
 
             @endforeach

@@ -4,40 +4,37 @@
     <style>
 
 
-
     </style>
 
-<body>
+    <body>
 
 
-
-<div class="row">
     <div>
-        <div class="row">
-            <ol class="d-flex">
 
-                @foreach(\App\Models\Product::all() as $product)
+        <ol>
+            @foreach(\App\Models\Product::all() as $product)
 
-                <li style="list-style-type: none">
-                    <div class="pr-4">
-                        <a href="products/{{$product->id}}">
-                        <div >
-                        <img src="storage/{{$product->image}}" style="width: 200px; height: 200px; overflow: hidden; position:relative" >
+                    <li  style="list-style-type: none; float: left; padding-bottom: 30px">
+                        <div class="pr-4">
+                            <a href="products/{{$product->id}}">
+                                <div>
+                                    <img src="storage/{{$product->image}}"
+                                         style="width: 200px; height: 200px; overflow: hidden; position:relative">
+                                </div>
+                            </a>
+                            <div>
+                                <a href="products/{{$product->id}}">
+                                    <div>{{$product->name}}</div>
+                                </a>
+                                <div>Tk. {{$product->price}}</div>
+                            </div>
                         </div>
-                        </a>
-                        <div>
-                            <a href="products/{{$product->id}}"> <div>{{$product->name}}</div></a>
-                            <div>Tk. {{$product->price}}</div>
-                        </div>
-                    </div>
-                </li>
+                    </li>
+            @endforeach
+        </ol>
 
-                @endforeach
-            </ol>
-        </div>
     </div>
-</div>
 
 
-</body>
+    </body>
 @endsection
