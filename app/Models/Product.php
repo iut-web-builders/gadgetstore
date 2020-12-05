@@ -12,7 +12,7 @@ class Product extends Model
     protected $guarded=[];
 
     public function brand(){
-        return $this->belongsTo(Brand::class,'name','brand');
+        return $this->hasOne(Brand::class,'name','brand');
     }
 
     public function user(){
@@ -20,7 +20,7 @@ class Product extends Model
     }
 
     public function category(){
-        return $this->belongsTo(Category::class,'name','category');
+        return $this->hasOne(Category::class,'name','category');
     }
 
 
