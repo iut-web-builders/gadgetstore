@@ -43,9 +43,11 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(string  $brand)
     {
-        //
+        $products = \DB::table('products')->where('brand',$brand)->get();
+        dd($products);
+        return view(("brands/show"),compact('products'));
     }
 
     /**

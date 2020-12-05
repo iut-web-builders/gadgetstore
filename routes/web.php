@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +28,9 @@ Route::get('/index',function (){
 });
 
 Route::resource('/products',ProductsController::class);
+
 Route::resource('/categories', CategoryController::class);
+Route::resource('/brands', BrandController::class);
 
 Auth::routes();
 
