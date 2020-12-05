@@ -73,13 +73,11 @@
                     <div class="form-group row">
                         <label for="category" class="col-md-4 col-form-label">Category</label>
 
-
-                        <input id="category"
-                               type="text"
-                               class="form-control @error('category') is-invalid @enderror"
-                               name="category"
-                               value="{{ old('category') }}"
-                               autocomplete="category" autofocus>
+                        <select id= "category" name="category">
+                            @foreach(\App\Models\Category::all() as $category)
+                            <option value="{{$category->name}}">{{$category->name}}</option>
+                            @endforeach
+                        </select>
 
                         @error('category')
                         <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
@@ -92,14 +90,11 @@
                     <!--Brand-->
                     <div class="form-group row">
                         <label for="brand" class="col-md-4 col-form-label">Brand Name</label>
-
-
-                        <input id="brand"
-                               type="text"
-                               class="form-control @error('brand') is-invalid @enderror"
-                               name="brand"
-                               value="{{ old('brand') }}"
-                               autocomplete="brand" autofocus>
+                        <select id="brand" name="brand">
+                            @foreach(\App\Models\Brand::all() as $brand)
+                                <option value="{{$brand->name}}">{{$brand->name}}</option>
+                            @endforeach
+                        </select>
 
                         @error('brand')
                         <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
