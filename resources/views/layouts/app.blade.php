@@ -45,7 +45,7 @@
                         <li class="nav-item dropdown"> <a href="#" class="p-2 nav-link dropdown-toggle" data-toggle="dropdown">Categories</a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 @foreach(\App\Models\Category::all() as $category)
-                                    <a class="dropdown-item" href="#">{{$category->name}}</a>
+                                    <a class="dropdown-item" href="/categories/{{$category->name}}">{{$category->name}}</a>
                                 @endforeach
                             </div>
                         </li>
