@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -54,12 +55,13 @@ class ProfilesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Profile $profile
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Profile $profile)
     {
-        //
+       // dd($profile);
+        return view('profiles/edit',compact('profile'));
     }
 
     /**
@@ -69,9 +71,10 @@ class ProfilesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        dd($request);
+
     }
 
     /**

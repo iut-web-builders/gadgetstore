@@ -2,18 +2,18 @@
 
 @section('content')
     <div class="container">
-        <form action="/products" enctype="multipart/form-data" method="post">
+        <form action="/profiles/{{$profile->id}}" enctype="multipart/form-data" method="post">
+            @method('patch')
             <div class="row">
                 @csrf
                 <div class="col-8 offset-2">
                     <div class="row">
-                        <h1>Add New Product</h1>
+                        <h1>Edit your profile information:</h1>
                     </div>
 
                     <!--Name--->
                     <div class="form-group row">
                         <label for="name" class="col-md-4 col-form-label">Name</label>
-
 
                         <input id="name"
                                type="text"
@@ -29,19 +29,19 @@
                     </div>
 
 
-                    <!--Description-->
+                    <!--Address-->
                     <div class="form-group row">
-                        <label for="description" class="col-md-4 col-form-label">Description</label>
+                        <label for="address" class="col-md-4 col-form-label">Address</label>
 
 
-                        <input id="description"
+                        <input id="address"
                                type="text"
-                               class="form-control @error('description') is-invalid @enderror"
-                               name="description"
-                               value="{{ old('description') }}"
-                               autocomplete="description" autofocus>
+                               class="form-control @error('address') is-invalid @enderror"
+                               name="address"
+                               value="{{ old('address') }}"
+                               autofocus>
 
-                        @error('description')
+                        @error('address')
                         <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                         @enderror
 
@@ -51,18 +51,18 @@
 
                     <!--Price-->
                     <div class="form-group row">
-                        <label for="price" class="col-md-4 col-form-label">Price</label>
+                        <label for="contact_number" class="col-md-4 col-form-label">Contact Number</label>
 
 
-                        <input id="price"
+                        <input id="contact_number"
                                type="number"
                                min="0"
-                               class="form-control @error('price') is-invalid @enderror"
-                               name="price"
-                               value="{{ old('price') }}"
-                               autocomplete="price" autofocus>
+                               class="form-control @error('contact_number') is-invalid @enderror"
+                               name="contact_number"
+                               value="{{ old('contact_number') }}"
+                               autocomplete="contact_number" autofocus>
 
-                        @error('price')
+                        @error('contact_number')
                         <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                         @enderror
 

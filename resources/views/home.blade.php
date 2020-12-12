@@ -7,7 +7,7 @@
                     src="https://images.pexels.com/photos/736230/pexels-photo-736230.jpeg?cs=srgb&dl=pexels-jonas-kakaroto-736230.jpg&fm=jpg" class="rounded-circle w-100" >
             </div>
 
-            <div class="col-9 pt-5">
+            <div class="col-8 pt-5">
                 <div class="d-flex align-items-baseline justify-content-between">
 
                     <div class="d-flex align-items-center pb-3">
@@ -18,7 +18,7 @@
 
                 <div class="pt-4 font-weight-bold">Title</div>
                 <div>Description</div>
-                <div> <a href="#">Add Profile Information</a></div>
+                <div> <a href="/profiles/{{$user->id}}/edit">Add Profile Information</a></div>
             </div>
         </div>
         <div class="row pt-5" >
