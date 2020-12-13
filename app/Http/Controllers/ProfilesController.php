@@ -14,6 +14,12 @@ class ProfilesController extends Controller
      *
      *
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     public function index()
     {
       //  $follows = (auth()->user())? auth()->user()->following->contains($user->id):false;
@@ -68,12 +74,27 @@ class ProfilesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Profile $profile
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, Profile $profile)
     {
-        dd($request);
+
+        $data = $request->validate([
+            "address" => ['max:512'],
+            "contact_number" => ['digits_between:4,15'],
+            "image" =>['image'],
+        ]);
+        $imagePath = $request['image']==null? $profile['image']:
+        request('image')->store('images','public');
+        $data['image'] = $imagePath;
+
+        $profile['image'] = $data['image'];
+        $profile['contact_number'] = $data['contact_number'];
+        $profile['address'] = $data['address'];
+        $profile->save();
+       // dd($profile->id);
+        return redirect('/profiles/'.$profile->id.'/edit');
 
     }
 
