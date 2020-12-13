@@ -3,8 +3,7 @@
 @section('content')
         <div class="row">
             <div class="col-3 p-5">
-                <img
-                    src="https://images.pexels.com/photos/736230/pexels-photo-736230.jpeg?cs=srgb&dl=pexels-jonas-kakaroto-736230.jpg&fm=jpg" class="rounded-circle w-100" >
+                <img src="/storage/{{$user->profile->image}}" alt="" class="rounded-circle" style="height: 200px; width: 200px">
             </div>
 
             <div class="col-8 pt-5">
@@ -18,7 +17,7 @@
 
                 <div class="pt-4 font-weight-bold">Title</div>
                 <div>Description</div>
-                <div> <a href="/profiles/{{$user->id}}/edit">Add Profile Information</a></div>
+                <div> <a href="/profiles/{{$user->id}}/edit">Edit Profile</a></div>
             </div>
         </div>
         <div class="row pt-5" >

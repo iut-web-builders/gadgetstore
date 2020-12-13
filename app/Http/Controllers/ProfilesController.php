@@ -64,9 +64,9 @@ class ProfilesController extends Controller
      * @param  Profile $profile
      * @return \Illuminate\Http\Response
      */
-    public function edit(Profile $profile)
+    public function edit()
     {
-       // dd($profile);
+        $profile = auth()->user()->profile;
         return view('profiles/edit',compact('profile'));
     }
 
