@@ -23,5 +23,8 @@ class Product extends Model
         return $this->hasOne(Category::class,'name','category');
     }
 
+    public function addedIntoCarts(){
+        return $this->belongsToMany(Cart::class);
+    }
 
 }
