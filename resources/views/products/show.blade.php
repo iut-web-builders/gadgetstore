@@ -30,7 +30,7 @@
                 <div>Price: Tk. {{$product->price}}</div>
                 <div>Category: {{$product->category}}</div>
                 <div>Brand: {{$product->brand}}</div>
-                <a href="#" class="pl-3"><div class="font-weight-bold">Add to Cart</div></a>
+                <a href="/carts/add" class="pl-3"><div class="font-weight-bold">Add to Cart</div></a>
             </div>
 
         </div>
