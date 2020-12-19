@@ -35,7 +35,7 @@ Route::resource('/products',ProductsController::class);
 Route::resource('/categories', CategoryController::class);
 Route::resource('/brands', BrandController::class);
 Route::resource('/profiles', ProfilesController::class);
-Route::get('/carts/add/{id}',[CartsController::class,'addToCart']);
+Route::get('/carts/add/{product}',[CartsController::class,'addToCart']);
 
 Auth::routes();
 
