@@ -92,10 +92,16 @@ class CartsController extends Controller
 
 
     public function addToCart(Product $product){
-     //   dd($product);
        $cart =  auth()->user()->cart;
        if(!$cart->products->contains($product['id']))
        $cart->products()->attach($product['id']);
        return redirect('/products/'.$product['id']);
+    }
+
+    public function removeFromCart(Product $product){
+        $cart =  auth()->user()->cart;
+        if($cart->products->contains($product['id']))
+            $cart->products()->detach($product['id']);
+        return redirect('/products/'.$product['id']);
     }
 }
