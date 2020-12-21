@@ -104,6 +104,6 @@ class CartsController extends Controller
         $cart =  auth()->user()->cart;
         if($cart->products->contains($product['id']))
             $cart->products()->detach($product['id']);
-        return redirect('/products/'.$product['id']);
+        return redirect()->back();
     }
 }
