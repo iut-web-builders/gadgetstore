@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use App\Models\Customer;
 use App\Models\Mod;
 use App\Models\Profile;
@@ -77,9 +78,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        $profile = new Profile();
-        $profile->user_id = $user->id;
-        $profile->save();
+        $this->createAssociatedTablesWithUser($user);
 
         return  $user;
     }
@@ -105,7 +104,34 @@ class RegisterController extends Controller
         return redirect()->intended('login/mod');
     }
 
+    /**
+     * @param User $user
+     */
+    protected function createAssociatedTablesWithUser(User $user): void
+    {
+        $this->createProfile($user);
+        $this->createCart($user);
+    }
 
+    /**
+     * @param User $user
+     */
+    protected function createProfile(User $user): void
+    {
+        $profile = new Profile();
+        $profile->user_id = $user->id;
+        $profile->save();
+    }
+
+    /**
+     * @param User $user
+     */
+    protected function createCart(User $user): void
+    {
+        $cart = new Cart();
+        $cart['id'] = $user->id;
+        $cart->save();
+    }
 
 
 }
