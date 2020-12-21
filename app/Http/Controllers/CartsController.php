@@ -51,9 +51,11 @@ class CartsController extends Controller
      * @param  \App\Models\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function show(Cart $cart)
+    public function show()
     {
-        //
+        $products = auth()->user()->cart->products;
+      //  dd($products);
+        return view('carts/show',compact('products'));
     }
 
     /**

@@ -100,7 +100,7 @@
                         <!-- search-->
                         <!-- cart -->
                         <li class="nav-item">
-                            <a class="nav-link" href="{{'#'}}">{{ __('🛒') }}</a>
+                            <a class="nav-link" href="{{'/carts/show'}}">{{ __('🛒') }}</a>
                         </li>
                         <li>
                             <div>

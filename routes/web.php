@@ -39,6 +39,8 @@ Route::resource('/profiles', ProfilesController::class);
 //Cart
 Route::get('/carts/add/{product}',[CartsController::class,'addToCart']);
 Route::get('/carts/remove/{product}',[CartsController::class,'removeFromCart']);
+Route::get('/carts/show/',[CartsController::class,'show']);
+
 
 Auth::routes();
 
