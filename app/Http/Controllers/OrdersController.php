@@ -7,7 +7,13 @@ use Illuminate\Http\Request;
 class OrdersController extends Controller
 {
     function checkOut(){
-        $products = auth()->user()->cart;
+        $user = auth()->user();
+        $cart = $user->cart;
+        $products = $cart->products;
+        foreach ($products as $product){
+            $user->orders()->attach($product['id']);
+            $cart->products()->detatch($product['id']);
+        }
 
     }
 }
