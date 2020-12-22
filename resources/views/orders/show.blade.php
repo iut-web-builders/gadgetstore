@@ -5,7 +5,7 @@
 
     <div class="container">
         <div class="card">
-            <div><strong>Your Products:</strong></div>
+            <div><strong>Congratulations! These are the products on the way:</strong></div>
             <table class="table table-hover shopping-cart-wrap">
                 <thead class="text-muted">
                 @foreach($products as $product)
