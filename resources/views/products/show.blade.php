@@ -30,7 +30,7 @@
                 <div>Price: Tk. {{$product->price}}</div>
                 <div>Category: {{$product->category}}</div>
                 <div>Brand: {{$product->brand}}</div>
-                @if(auth()->user()==null||!auth()->user()->cart->products->contains($product))
+                @if(auth()->user()==null || !auth()->user()->cart->products->contains($product))
                     <a href="/carts/add/{{$product['id']}}" class="pl-3"><div class="font-weight-bold">Add to Cart</div></a>
                 @else
                     <a href="/carts/remove/{{$product['id']}}" class="pl-3"><div class="font-weight-bold">Remove From Cart</div></a>

@@ -14,16 +14,8 @@ class UsersTableSeeder extends Seeder
      * @return void
      */
 
-    public function run()
-    {
-        $userString = 'user';
-        $userNumber = 0;
-        $user = $userString.$userNumber;
-        $userNumber++;
-        DB::table('users')->insert([
-            'name' => $user,
-            'email' => $user.'@user.com',
-            'password' => Hash::make($user.'@user.com'),
-        ]);
-    }
+
+
+
+
 }
