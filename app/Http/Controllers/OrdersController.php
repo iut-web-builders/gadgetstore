@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class OrdersController extends Controller
 {
     function checkOut(){
+        dd(\request()->request);
         $user = auth()->user();
         $cart = $user->cart;
         $products = $cart->products;

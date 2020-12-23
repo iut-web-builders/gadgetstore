@@ -3,11 +3,14 @@
 @section('content')
     <!--Section: Block Content-->
 
-    <div class="container">
+    <div class="container" xmlns="http://www.w3.org/1999/html">
         <div class="card">
             <div><strong>Your Products:</strong></div>
+            <form action="/orders/store" enctype="multipart/form-data" method="post">
+                @csrf
             <table class="table table-hover shopping-cart-wrap">
                 <thead class="text-muted">
+
                 @foreach($products as $product)
                 <tr>
                     <th scope="col">Product</th>
@@ -32,7 +35,8 @@
                     </td>
                     <td>
                         <label>
-                            <input type="number" value="1" class="form-control" min="1" max="100">
+                            <input type="hidden" name="cart_product_id[]"  value="{{$product->id}}" >
+                            <input  type="number" name="cart_product_quantity[]" value="1" class="form-control" min="1" max="100">
                         </label>
                     </td>
                     <td>
@@ -46,10 +50,12 @@
                 </tr>
                 @endforeach
 
-
                 </tbody>
+
             </table>
-            <div><a href="/orders/checked">Proceed to checkout</a></div>
+
+                <div><button>Proceed to checkout</button></div>
+            </form>
         </div> <!-- card.// -->
 
 
