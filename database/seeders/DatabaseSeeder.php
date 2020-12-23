@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'abed menh o lorum ipsum dolor abdo qora ti ano sennin gen',
             'category' => Category::all()[rand(0, 4)]->name,
             'brand' => Brand::all()[rand(0, 4)]->name,
-            'user_id' => rand(0, 30),
+            'user_id' => rand(1, 30),
             'point' => rand(1, 100),
         ]);
     }

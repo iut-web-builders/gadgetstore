@@ -8,12 +8,15 @@
             <div><strong>Congratulations! These are the products on the way:</strong></div>
             <table class="table table-hover shopping-cart-wrap">
                 <thead class="text-muted">
-                @foreach($products as $product)
+                @foreach($orders as $order)
+                    @php
+                    $product = \App\Models\Product::find($order['product_id']);
+                    $product['quantity'] = $order['quantity'];
+                    @endphp
                 <tr>
                     <th scope="col">Product</th>
                     <th scope="col" width="120">Quantity</th>
                     <th scope="col" width="120">Price</th>
-                    <th scope="col" width="200" class="text-right">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -31,17 +34,12 @@
                         </figure>
                     </td>
                     <td>
-                        <label>
-                            <input type="number" value="1" class="form-control" min="1" max="100">
-                        </label>
+                        <div>{{$product['quantity']}}</div>
                     </td>
                     <td>
                         <div class="price-wrap">
                             <var class="price">Tk. {{$product->price}} each</var>
                         </div> <!-- price-wrap .// -->
-                    </td>
-                    <td class="text-right">
-                        <a href="/carts/remove/{{$product->id}}" class="btn btn-outline-danger"> × Remove</a>
                     </td>
                 </tr>
                 @endforeach
@@ -49,8 +47,7 @@
 
                 </tbody>
             </table>
-            <div><a href="/orders/checked">Proceed to checkout</a></div>
-        </div> <!-- card.// -->
+             <!-- card.// -->
 
 
     </div>

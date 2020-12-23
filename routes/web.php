@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartsController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfilesController;
 use App\Models\Cart;
@@ -41,7 +42,9 @@ Route::get('/carts/add/{product}',[CartsController::class,'addToCart']);
 Route::get('/carts/remove/{product}',[CartsController::class,'removeFromCart']);
 Route::get('/carts/show/',[CartsController::class,'show']);
 
-
+//Orders
+Route::post('/orders/store',[OrdersController::class,'checkOut']);
+Route::get('orders/show',[OrdersController::class,'show']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
