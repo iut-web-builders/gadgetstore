@@ -44,6 +44,7 @@ Route::get('/carts/show/',[CartsController::class,'show']);
 
 //Orders
 Route::post('/orders/store',[OrdersController::class,'checkOut']);
+Route::get('orders/show',[OrdersController::class,'show']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
