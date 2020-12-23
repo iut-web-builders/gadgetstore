@@ -17,7 +17,8 @@ class CreateProductUserPivotTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('product_id');
-            
+            $table->unsignedInteger('quantity');
+
             $table->timestamps();
         });
     }
