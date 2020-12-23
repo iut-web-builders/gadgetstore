@@ -26,9 +26,18 @@ class OrdersController extends Controller
 
             $user = auth()->user();
             foreach ($cartData as $cartDatum) {
-                $user->orders()->attach($cartDatum['product'], [
-                    'quantity' => $cartDatum['quantity'],
-                ]);
+                if(!$user->orders->contains($cartDatum['product'])) {
+                    $user->orders()->attach($cartDatum['product'], [
+                        'quantity' => $cartDatum['quantity'],
+                    ]);
+
+                }
+                else
+                {
+                    $pivot = auth()->user()->orders()->where('product_id',$cartDatum['product'])->first()->pivot;
+                    $pivot['quantity']+= $cartDatum['quantity'];
+                    $pivot->save();
+                }
                 $user->cart->products()->detach($cartDatum['product']);
             }
         }
