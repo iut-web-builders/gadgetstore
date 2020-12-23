@@ -38,8 +38,7 @@ class OrdersController extends Controller
 
     public function show(){
         $orders = auth()->user()->orders()->first()->pivot->get();
-        dd($orders);
-        return view('orders/show',compact($orders));
+        return view('orders/show',compact('orders'));
     }
 
 

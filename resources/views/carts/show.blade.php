@@ -54,7 +54,7 @@
 
             </table>
 
-                <div><button>Proceed to checkout</button></div>
+                <div><button>@if(count($products)!=0)Checkout and @endif See The Products on The Way</button></div>
             </form>
         </div> <!-- card.// -->
 
