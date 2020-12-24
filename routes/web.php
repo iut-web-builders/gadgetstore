@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfilesController;
+use App\Http\Controllers\SettingsController;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -63,3 +64,7 @@ Route::post('/register/mod', [RegisterController::class,'createMod']);
 //Route::view('/home', 'home')->middleware('auth');
 Route::view('/mod', 'mod');
 
+
+
+//Settings
+Route::get('/settings/my-products',[SettingsController::class,'myProducts']);

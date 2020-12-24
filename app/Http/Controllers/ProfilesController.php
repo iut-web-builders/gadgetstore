@@ -67,7 +67,7 @@ class ProfilesController extends Controller
     public function edit()
     {
         $profile = auth()->user()->profile;
-        return view('profiles/edit',compact('profile'));
+        return view('/profiles/edit',compact('profile'));
     }
 
     /**
@@ -94,7 +94,7 @@ class ProfilesController extends Controller
         $profile['address'] = $data['address'];
         $profile->save();
        // dd($profile->id);
-        return redirect('/profiles/'.$profile->id.'/edit');
+        return redirect()->back();
 
     }
 
