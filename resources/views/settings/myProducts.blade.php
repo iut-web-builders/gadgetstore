@@ -36,7 +36,7 @@
                             </div> <!-- price-wrap .// -->
                         </td>
                         <td class="text-right">
-                            <a href="/products/edit/{{$product->id}}" class="btn btn-outline-primary">Edit</a>
+                            <a href="/products/{{$product->id}}/edit" class="btn btn-outline-primary">Edit</a>
                         </td>
                     </tr>
                     @endforeach

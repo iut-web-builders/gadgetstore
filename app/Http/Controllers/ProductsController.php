@@ -41,7 +41,7 @@ class ProductsController extends Controller
             'price' => ['required', 'numeric','gte:0'],
             'brand'=> ['max:50'],
             'category'=>['max:50'],
-            'image' => ['image'],
+            'image' => ['image','required'],
         ];
         $data = $request->validate($validationTemplate);
         $imagePath = request('image')->store('images','public');
@@ -71,7 +71,7 @@ class ProductsController extends Controller
      */
     public function edit(Product $product)
     {
-        
+        return view('products/edit',compact('product'));
     }
 
     /**
@@ -83,7 +83,23 @@ class ProductsController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $validationTemplate = [
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['max:255'],
+            'price' => ['required', 'numeric','gte:0'],
+            'brand'=> ['max:50'],
+            'category'=>['max:50'],
+            'image' => ['image'],
+        ];
+        $data = $request->validate($validationTemplate);
+
+        $imagePath = $request['image']==null? $product['image']:
+            request('image')->store('images','public');
+        $data['image'] = $imagePath;
+        $data['point'] = $data['price']/10;
+        $product->update($data);
+        return redirect()->back();
+
     }
 
     /**
