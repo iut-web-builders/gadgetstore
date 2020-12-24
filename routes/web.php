@@ -31,8 +31,9 @@ Route::get('/', function () {
 Route::get('/index',function (){
     return view('gadgetstore');
 });
-
+//Products
 Route::resource('/products',ProductsController::class);
+Route::get('products/remove/{product}',[ProductsController::class,'remove']);
 
 Route::resource('/categories', CategoryController::class);
 Route::resource('/brands', BrandController::class);

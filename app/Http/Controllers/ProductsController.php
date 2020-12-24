@@ -108,8 +108,10 @@ class ProductsController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function remove(Product $product)
     {
-        //
+        $this->middleware('auth');
+        $product->delete();
+        return redirect('/settings/my-products');
     }
 }
