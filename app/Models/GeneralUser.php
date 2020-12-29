@@ -47,7 +47,7 @@ class GeneralUser extends Authenticatable
     }
 
     public function profile(){
-        return $this->hasOne(Profile::class,'id');
+        return $this->hasOne(Profile::class,'user_id');
     }
 
     public function cart(){
