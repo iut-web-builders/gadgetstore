@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class GeneralUser extends Authenticatable
 {
     use HasFactory, Notifiable;
 
@@ -43,7 +43,7 @@ class User extends Authenticatable
 
 
     public function products(){
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class,'user_id');
     }
 
     public function profile(){

@@ -10,7 +10,7 @@ class Cart extends Model
     use HasFactory;
 
     public function user(){
-        return $this->belongsTo(User::class,'id','id');
+        return $this->belongsTo(GeneralUser::class,'id','id');
     }
 
     public function products(){

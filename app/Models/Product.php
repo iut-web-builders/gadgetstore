@@ -16,7 +16,7 @@ class Product extends Model
     }
 
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(GeneralUser::class,'user_id');
     }
 
     public function category(){
@@ -28,7 +28,7 @@ class Product extends Model
     }
 
     public function orderMakers(){
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(GeneralUser::class);
     }
 
 }

@@ -8,7 +8,7 @@ use App\Models\Customer;
 use App\Models\Mod;
 use App\Models\Profile;
 use App\Providers\RouteServiceProvider;
-use App\Models\User;
+use App\Models\GeneralUser;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -66,13 +66,13 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Models\User
+     * @return \App\Models\GeneralUser
      */
     protected function create(array $data)
     {
 
 
-        $user = User::create([
+        $user = GeneralUser::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -105,18 +105,18 @@ class RegisterController extends Controller
     }
 
     /**
-     * @param User $user
+     * @param GeneralUser $user
      */
-    protected function createAssociatedTablesWithUser(User $user): void
+    protected function createAssociatedTablesWithUser(GeneralUser $user): void
     {
         $this->createProfile($user);
         $this->createCart($user);
     }
 
     /**
-     * @param User $user
+     * @param GeneralUser $user
      */
-    protected function createProfile(User $user): void
+    protected function createProfile(GeneralUser $user): void
     {
         $profile = new Profile();
         $profile->user_id = $user->id;
@@ -124,9 +124,9 @@ class RegisterController extends Controller
     }
 
     /**
-     * @param User $user
+     * @param GeneralUser $user
      */
-    protected function createCart(User $user): void
+    protected function createCart(GeneralUser $user): void
     {
         $cart = new Cart();
         $cart['id'] = $user->id;

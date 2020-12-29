@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Brand;
 use App\Models\Category;
-use App\Models\User;
+use App\Models\GeneralUser;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -29,10 +29,10 @@ class DatabaseSeeder extends Seeder
 
     protected function seedUser($userNumber): void
     {
-        User::flushEventListeners();
+        GeneralUser::flushEventListeners();
         $userString = 'user';
         $user = $userString . $userNumber;
-        DB::table('users')->insert([
+        DB::table('general_users')->insert([
             'name' => $user,
             'email' => $user . '@user.com',
             'password' => Hash::make($user . '@user.com'),
