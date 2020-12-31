@@ -16,6 +16,16 @@ class CreateMainProductsTable extends Migration
         Schema::create('main_products', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('name');
+            $table->string('image');
+            $table->unsignedInteger('price');
+            $table->text('description');
+            $table->unsignedInteger('point');
+            $table->string('brand');
+            $table->string('category');
+            $table->unsignedInteger('mod_id');
+
+            $table->index('mod_id');
         });
     }
 
