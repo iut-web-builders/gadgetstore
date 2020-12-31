@@ -78,4 +78,5 @@ Route::resources([
     'mod'=> ModProfileController::class,
     'main/products' => MainProductsController::class,
 ]);
+Route::get('/main/products/{product}/remove',[MainProductsController::class,'remove']);
 

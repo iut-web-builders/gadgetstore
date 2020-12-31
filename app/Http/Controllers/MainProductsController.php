@@ -117,7 +117,7 @@ class MainProductsController extends Controller
      */
     public function remove(MainProduct $product)
     {
-        $this->middleware('auth');
+        $this->middleware('auth:mod');
         $product->delete();
         return redirect('/mod/');
     }

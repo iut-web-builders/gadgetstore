@@ -124,7 +124,7 @@
             </div>
         </form>
         <div class="pt-2">
-        <a href="/products/remove/{{$product->id}}}">
+        <a href="/main/products/{{$product->id}}}/remove">
         <div class="row"><div class="offset-2 col-8"><div class="row">
                     <button class="btn btn-outline-danger form-control">Delete</button>
                 </div>
