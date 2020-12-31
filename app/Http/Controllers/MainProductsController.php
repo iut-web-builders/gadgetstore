@@ -67,7 +67,7 @@ class MainProductsController extends Controller
      */
     public function show(MainProduct $product)
     {
-        return view('products/show',compact('product'));
+        return view('mod/products/show',compact('product'));
     }
 
     /**

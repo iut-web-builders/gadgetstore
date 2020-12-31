@@ -15,4 +15,8 @@ class MainProduct extends Model
     {
         return $this->belongsTo(Mod::class,'mod_id');
     }
+
+    public function cart(){
+
+    }
 }
