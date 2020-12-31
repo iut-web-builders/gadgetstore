@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.modbar')
 
 @section('content')
     <div class="container">
-        <form action="/mod/products" enctype="multipart/form-data" method="post">
+        <form action="/main/products" enctype="multipart/form-data" method="post">
             <div class="row">
                 @csrf
                 <div class="col-8 offset-2">

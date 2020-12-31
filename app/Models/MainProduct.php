@@ -13,6 +13,6 @@ class MainProduct extends Model
 
     public function user()
     {
-        return $this->belongsTo(Mod::class);
+        return $this->belongsTo(Mod::class,'mod_id');
     }
 }

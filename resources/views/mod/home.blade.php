@@ -12,7 +12,7 @@
                     <div class="d-flex align-items-center pb-3">
                         <div class="h4">{{$user->name}}</div>
                     </div>
-                        <a href="/mod/products/create">Add new product</a>
+                        <a href="/main/products/create">Add new product</a>
                 </div>
 
                 <div class="pt-4 font-weight-bold">Title</div>
@@ -23,7 +23,7 @@
         <div class="row pt-5" >
             @foreach($user->products as $product)
                 <div class="col-4  pb-3">
-                    <a href="/main-products/{{$product->id}}/edit">
+                    <a href="/main/products/{{$product->id}}/edit">
                         <img src="/storage/{{$product->image}}" alt="Image" class="w-100" style="max-height: 400px; max-width: 400px">
                     </a>
                     <div><strong>{{$product->name}}</strong></div>

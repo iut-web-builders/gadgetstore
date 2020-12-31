@@ -1,8 +1,8 @@
-@extends('layouts.sidebar')
+@extends('layouts.modbar')
 
 @section('content')
     <div class="container">
-        <form action="/mod/products/{{$product['id']}}" enctype="multipart/form-data" method="post">
+        <form action="/main/products/{{$product['id']}}" enctype="multipart/form-data" method="post">
             @method('patch')
             <div class="row">
                 @csrf

@@ -74,5 +74,8 @@ Route::get('/settings/my-products',[SettingsController::class,'myProducts']);
 
 //mod_profile
 
-Route::resource('/mod/',ModProfileController::class);
-Route::resource('/mod/products/', MainProductsController::class);
+Route::resources([
+    'mod'=> ModProfileController::class,
+    'main/products' => MainProductsController::class,
+]);
+
