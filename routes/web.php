@@ -30,6 +30,10 @@ Route::get('/', function () {
     return view('gadgetstore');
 });
 
+Route::get('/from-you', function () {
+    return view('user_products');
+});
+
 Route::get('/index',function (){
     return view('gadgetstore');
 });
