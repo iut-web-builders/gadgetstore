@@ -16,6 +16,10 @@ class CreateModProfilesTable extends Migration
         Schema::create('mod_profiles', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->unsignedBigInteger('mod_id');
+            $table->string('address')->nullable();
+            $table->unsignedBigInteger('contact_number')->nullable();
+            $table->string('image')->nullable();
         });
     }
 
