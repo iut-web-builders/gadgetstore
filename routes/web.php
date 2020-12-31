@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartsController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MainCartsController;
 use App\Http\Controllers\MainProductsController;
 use App\Http\Controllers\ModProfileController;
 use App\Http\Controllers\OrdersController;
@@ -85,6 +86,6 @@ Route::resources([
 Route::get('/main/products/{product}/remove',[MainProductsController::class,'remove']);
 
 //main-cart
-Route::get('/main-cart/add/{product}',[CartsController::class,'addToCart']);
-Route::get('/main-cart/remove/{product}',[CartsController::class,'removeFromCart']);
+Route::get('/main-cart/add/{product}',[MainCartsController::class,'addToCart']);
+Route::get('/main-cart/remove/{product}',[MainCartsController::class,'removeFromCart']);
 

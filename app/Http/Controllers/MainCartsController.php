@@ -26,7 +26,7 @@ class MainCartsController extends Controller
         $cart =  auth()->user()->mainCart;
         if(!$cart->products->contains($product['id']))
             $cart->products()->attach($product['id']);
-        return redirect('/products/'.$product['id']);
+        return redirect('main/products/'.$product['id']);
     }
 
     public function removeFromCart(MainProduct $product){

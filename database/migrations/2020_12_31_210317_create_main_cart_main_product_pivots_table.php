@@ -15,6 +15,10 @@ class CreateMainCartMainProductPivotsTable extends Migration
     {
         Schema::create('main_cart_main_product', function (Blueprint $table) {
             $table->id();
+
+            $table->unsignedBigInteger('main_cart_id');
+            $table->unsignedBigInteger('main_product_id');
+
             $table->timestamps();
         });
     }

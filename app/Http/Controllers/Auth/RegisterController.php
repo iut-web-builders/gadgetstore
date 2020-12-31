@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Customer;
+use App\Models\MainCart;
 use App\Models\Mod;
 use App\Models\ModProfile;
 use App\Models\Profile;
@@ -134,6 +135,9 @@ class RegisterController extends Controller
     protected function createCart(User $user): void
     {
         $cart = new Cart();
+        $cart['id'] = $user->id;
+        $cart->save();
+        $cart = new MainCart();
         $cart['id'] = $user->id;
         $cart->save();
     }
