@@ -24,7 +24,7 @@ class MainProductsController extends Controller
      */
     public function create()
     {
-        return view('/products/create');
+        return view('/mod/products/create');
     }
 
     /**
