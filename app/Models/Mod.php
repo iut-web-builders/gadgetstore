@@ -23,4 +23,13 @@ class Mod extends Authenticatable
         'password', 'remember_token'
     ];
 
+    public function products(){
+        return $this->hasMany(MainProduct::class);
+    }
+
+    public function profile(){
+        return $this->hasOne(ModProfile::class);
+    }
+
+
 }
