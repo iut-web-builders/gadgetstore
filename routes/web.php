@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartsController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ModProfileController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfilesController;
@@ -69,3 +70,7 @@ Route::view('/mod', 'mod');
 
 //Settings
 Route::get('/settings/my-products',[SettingsController::class,'myProducts']);
+
+
+//mod_profile
+Route::get('/mod/home',[ModProfileController::class,'home']);
