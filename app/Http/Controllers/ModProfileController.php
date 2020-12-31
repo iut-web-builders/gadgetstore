@@ -13,7 +13,14 @@ class ModProfileController extends Controller
 
     public function home(){
         $user = auth('mod')->user();
-        //dd($user->profile);
+       // dd($user);
+        if ($user->profile->image==null)
+            $user->profile->image = "/images/svg/noimage.svg";
         return view('mod/home',compact('user'));
+    }
+
+    protected function index()
+    {
+        return $this->home();
     }
 }
