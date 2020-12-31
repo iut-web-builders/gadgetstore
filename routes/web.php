@@ -84,3 +84,7 @@ Route::resources([
 ]);
 Route::get('/main/products/{product}/remove',[MainProductsController::class,'remove']);
 
+//main-cart
+Route::get('/main-cart/add/{product}',[CartsController::class,'addToCart']);
+Route::get('/main-cart/remove/{product}',[CartsController::class,'removeFromCart']);
+

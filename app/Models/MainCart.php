@@ -13,8 +13,8 @@ class MainCart extends Model
         return $this->belongsTo(User::class,'id','id');
     }
 
-    public function mainProducts(){
-        return $this->hasMany(MainProduct::class);
+    public function products(){
+        return $this->belongsToMany(MainProduct::class);
     }
 
 }

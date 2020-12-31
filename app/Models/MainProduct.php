@@ -16,7 +16,7 @@ class MainProduct extends Model
         return $this->belongsTo(Mod::class,'mod_id');
     }
 
-    public function cart(){
-
+    public function addedIntoCarts(){
+        return $this->belongsToMany(Cart::class);
     }
 }
