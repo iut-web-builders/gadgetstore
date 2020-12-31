@@ -49,7 +49,7 @@ class MainProductsController extends Controller
         $data['point'] = $data['price']/10;
         //   dd($data);
 
-        auth()->user('mod')->products()->create($data);
+        auth('mod')->user()->products()->create($data);
         return  redirect('/mod/');
     }
 

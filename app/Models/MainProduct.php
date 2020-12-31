@@ -9,6 +9,8 @@ class MainProduct extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function user()
     {
         return $this->belongsTo(Mod::class);
