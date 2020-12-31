@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Customer;
 use App\Models\Mod;
+use App\Models\ModProfile;
 use App\Models\Profile;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
@@ -99,6 +100,10 @@ class RegisterController extends Controller
             'password' => Hash::make($request['password']),
 
         ]);
+        $modProfile = new ModProfile();
+        $modProfile['mod_id'] = $mod['id'];
+        $modProfile->save();
+
 
 
         return redirect()->intended('login/mod');

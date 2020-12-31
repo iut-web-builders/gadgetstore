@@ -12,7 +12,8 @@ class ModProfileController extends Controller
     }
 
     public function home(){
-
-        return view('mod/home');
+        $user = auth('mod')->user();
+        //dd($user->profile);
+        return view('mod/home',compact('user'));
     }
 }
