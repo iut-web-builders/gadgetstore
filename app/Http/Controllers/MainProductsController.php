@@ -35,7 +35,22 @@ class MainProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validationTemplate = [
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['max:255'],
+            'price' => ['required', 'numeric','gte:0'],
+            'brand'=> ['max:50'],
+            'category'=>['max:50'],
+            'image' => ['image','required'],
+        ];
+        $data = $request->validate($validationTemplate);
+        $imagePath = request('image')->store('images','public');
+        $data['image'] = $imagePath;
+        $data['point'] = $data['price']/10;
+        //   dd($data);
+
+        auth()->user('mod')->products()->create($data);
+        return  redirect('/mod/');
     }
 
     /**
