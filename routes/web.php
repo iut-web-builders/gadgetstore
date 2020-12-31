@@ -5,6 +5,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartsController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MainProductsController;
+use App\Http\Controllers\ModProfileController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfilesController;
@@ -63,9 +65,14 @@ Route::post('/register/mod', [RegisterController::class,'createMod']);
 
 
 //Route::view('/home', 'home')->middleware('auth');
-Route::view('/mod', 'mod');
 
 
 
 //Settings
 Route::get('/settings/my-products',[SettingsController::class,'myProducts']);
+
+
+//mod_profile
+
+Route::resource('/mod/',ModProfileController::class);
+Route::resource('/mod/products/', MainProductsController::class);
