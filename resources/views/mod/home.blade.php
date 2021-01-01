@@ -1,4 +1,4 @@
-@extends('layouts.sidebar')
+@extends('layouts.modbar')
 
 @section('content')
         <div class="row">

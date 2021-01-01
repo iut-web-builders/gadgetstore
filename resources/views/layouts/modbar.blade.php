@@ -73,6 +73,14 @@
     <a href="/settings/my-products">My Products</a>
     <a href="/home">Home</a>
     <a href="/">Store</a>
+    <a href="{{ route('logout') }}"
+           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            Log out
+        </a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
 </div>
 
 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Panel</span>

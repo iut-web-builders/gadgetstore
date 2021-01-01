@@ -25,7 +25,8 @@ class CartsController extends Controller
     public function show()
     {
         $products = auth()->user()->cart->products;
-        return view('carts/show',compact('products'));
+        $mainProducts = auth()->user()->mainCart->products;
+        return view('carts/show',compact('products','mainProducts'));
     }
 
 

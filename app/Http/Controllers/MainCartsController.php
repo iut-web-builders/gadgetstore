@@ -24,6 +24,7 @@ class MainCartsController extends Controller
 
     public function addToCart(MainProduct $product){
         $cart =  auth()->user()->mainCart;
+
         if(!$cart->products->contains($product['id']))
             $cart->products()->attach($product['id']);
         return redirect('main/products/'.$product['id']);
