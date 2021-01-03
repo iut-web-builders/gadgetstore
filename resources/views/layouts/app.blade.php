@@ -57,6 +57,7 @@
                             </div>
 
                         </li>
+                        <li><a href="/from-you" class="nav-link">From People Like You</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartsController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MainCartsController;
 use App\Http\Controllers\MainProductsController;
 use App\Http\Controllers\ModProfileController;
 use App\Http\Controllers\OrdersController;
@@ -28,6 +29,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('gadgetstore');
+});
+
+Route::get('/from-you', function () {
+    return view('user_products');
 });
 
 Route::get('/index',function (){
@@ -74,5 +79,16 @@ Route::get('/settings/my-products',[SettingsController::class,'myProducts']);
 
 //mod_profile
 
-Route::resource('/mod/',ModProfileController::class);
-Route::resource('/mod/products/', MainProductsController::class);
+Route::resources([
+    'mod'=> ModProfileController::class,
+    'main/products' => MainProductsController::class,
+]);
+Route::get('/main/products/{product}/remove',[MainProductsController::class,'remove']);
+
+//main-cart
+Route::get('/main-cart/add/{product}',[MainCartsController::class,'addToCart']);
+Route::get('/main-cart/remove/{product}',[MainCartsController::class,'removeFromCart']);
+
+//main-order
+Route::post('/orders/main/store',[OrdersController::class,'mainCheckOut']);
+

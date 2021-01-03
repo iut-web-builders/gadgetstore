@@ -14,40 +14,43 @@ class OrdersController extends Controller
 
     function checkOut(){
        // dd(\request()->request);
+        $user = auth()->user();
         $cartData = \request()->validate([
             "cart_product_id.*" => ['numeric','gt:0'],
             "cart_product_quantity.*" => ['numeric','gt:0']
         ]);
-        if($cartData!=null) {
-            $cartProductIDs = $cartData["cart_product_id"];
-            $cartProductQuantities = $cartData["cart_product_quantity"];
-            $cartData = $this->mergeIntoObjectArray($cartProductIDs, $cartProductQuantities);
+        $returnLocation = redirect()->back();
+        if($cartData == null) return  $returnLocation;
+        $cartData = $this->createDataFromInput($cartData);
 
+        foreach ($cartData as $cartDatum) {
+            if(!$user->orders->contains($cartDatum['product'])) {
+                $user->orders()->attach($cartDatum['product'], [
+                    'quantity' => $cartDatum['quantity'],
+                ]);
 
-            $user = auth()->user();
-            foreach ($cartData as $cartDatum) {
-                if(!$user->orders->contains($cartDatum['product'])) {
-                    $user->orders()->attach($cartDatum['product'], [
-                        'quantity' => $cartDatum['quantity'],
-                    ]);
-
-                }
-                else
-                {
-                    $pivot = auth()->user()->orders()->where('product_id',$cartDatum['product'])->first()->pivot;
-                    $pivot['quantity']+= $cartDatum['quantity'];
-                    $pivot->save();
-                }
-                $user->cart->products()->detach($cartDatum['product']);
             }
+            else
+            {
+                $pivot = auth()->user()->orders()->where('product_id',$cartDatum['product'])->first()->pivot;
+                $pivot['quantity']+= $cartDatum['quantity'];
+                $pivot->save();
+            }
+            $user->cart->products()->detach($cartDatum['product']);
         }
 
-        return redirect('/orders/show');
+        return $returnLocation;
     }
 
     public function show(){
-        $orders = auth()->user()->orders()->first()->pivot->get();
-        return view('orders/show',compact('orders'));
+        $user = auth()->user();
+        $orderedProducts = [];
+        $orderedMainProducts = [];
+        if($user->orders()->first()!=null)
+          $orderedProducts = auth()->user()->orders;
+        if($user->mainOrders->first()!=null)
+            $orderedMainProducts = auth()->user()->mainOrders;
+        return view('orders/show',compact('orderedProducts','orderedMainProducts'));
     }
 
 
@@ -65,6 +68,50 @@ class OrdersController extends Controller
         }
 
         return $cartData;
+    }
+
+    /**
+     * @param array $cartData
+     * @return array|null
+     */
+    protected function createDataFromInput(array $cartData): ?array
+    {
+        $cartProductIDs = $cartData["cart_product_id"];
+        $cartProductQuantities = $cartData["cart_product_quantity"];
+        $cartData = $this->mergeIntoObjectArray($cartProductIDs, $cartProductQuantities);
+        return $cartData;
+    }
+
+
+
+    function mainCheckOut(){
+        $returnLocation = redirect()->back();
+        $user = auth()->user();
+        $cartData = \request()->validate([
+            "cart_product_id.*" => ['numeric','gt:0'],
+            "cart_product_quantity.*" => ['numeric','gt:0']
+        ]);
+        if($cartData == null) return  $returnLocation;
+
+        $cartData = $this->createDataFromInput($cartData);
+
+        foreach ($cartData as $cartDatum) {
+            if(!$user->mainOrders->contains($cartDatum['product'])) {
+                $user->mainOrders()->attach($cartDatum['product'], [
+                    'quantity' => $cartDatum['quantity'],
+                ]);
+
+            }
+            else
+            {
+                $pivot = auth()->user()->mainOrders()->where('main_product_id',$cartDatum['product'])->first()->pivot;
+                $pivot['quantity']+= $cartDatum['quantity'];
+                $pivot->save();
+            }
+            $user->mainCart->products()->detach($cartDatum['product']);
+        }
+
+        return $returnLocation;
     }
 
 

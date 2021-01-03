@@ -13,6 +13,14 @@ class MainProduct extends Model
 
     public function user()
     {
-        return $this->belongsTo(Mod::class);
+        return $this->belongsTo(Mod::class,'mod_id');
+    }
+
+    public function addedIntoCarts(){
+        return $this->belongsToMany(Cart::class);
+    }
+
+    public function orderMakers(){
+        return $this->belongsToMany(User::class);
     }
 }

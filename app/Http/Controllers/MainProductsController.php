@@ -9,7 +9,7 @@ class MainProductsController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     *N
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -59,42 +59,66 @@ class MainProductsController extends Controller
      * @param  \App\Models\MainProduct  $mainProduct
      * @return \Illuminate\Http\Response
      */
-    public function show(MainProduct $mainProduct)
+
+    /**
+     * Display the specified resource.
+     * @param  MainProduct  $product
+     * @return \View
+     */
+    public function show(MainProduct $product)
     {
-        //
+        return view('mod/products/show',compact('product'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\MainProduct  $mainProduct
-     * @return \Illuminate\Http\Response
+     * @param  \App\Models\MainProduct  $product
+     * @return
      */
-    public function edit(MainProduct $mainProduct)
+    public function edit(MainProduct $product)
     {
-        //
+        return view('/mod/products/edit',compact('product'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\MainProduct  $mainProduct
-     * @return \Illuminate\Http\Response
+     * @param  \App\Models\MainProduct  $product
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, MainProduct $mainProduct)
+    public function update(Request $request, MainProduct $product)
     {
-        //
+        $validationTemplate = [
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['max:255'],
+            'price' => ['required', 'numeric','gte:0'],
+            'brand'=> ['max:50'],
+            'category'=>['max:50'],
+            'image' => ['image'],
+        ];
+        $data = $request->validate($validationTemplate);
+
+        $imagePath = $request['image']==null? $product['image']:
+            request('image')->store('images','public');
+        $data['image'] = $imagePath;
+        $data['point'] = $data['price']/10;
+        $product->update($data);
+        return redirect()->back();
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\MainProduct  $mainProduct
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MainProduct $mainProduct)
+    public function remove(MainProduct $product)
     {
-        //
+        $this->middleware('auth:mod');
+        $product->delete();
+        return redirect('/mod/');
     }
 }
