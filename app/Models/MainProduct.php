@@ -19,4 +19,8 @@ class MainProduct extends Model
     public function addedIntoCarts(){
         return $this->belongsToMany(Cart::class);
     }
+
+    public function orderMakers(){
+        return $this->belongsToMany(User::class);
+    }
 }

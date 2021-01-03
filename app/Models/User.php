@@ -63,6 +63,10 @@ class User extends Authenticatable
         return $this->belongsToMany(Product::class)->withPivot('quantity');
     }
 
+    public function mainOrders(){
+        return $this->belongsToMany(MainProduct::class)->withPivot('quantity');
+    }
+
 
 
 }

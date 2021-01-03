@@ -17,6 +17,7 @@ class CreateMainProductUserPivotsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('main_product_id');
+            $table->integer('quantity');
             $table->timestamps();
         });
     }
