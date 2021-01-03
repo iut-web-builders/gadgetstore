@@ -13,7 +13,7 @@ class CreateMainProductUserPivotsTable extends Migration
      */
     public function up()
     {
-        Schema::create('main_cart_product', function (Blueprint $table) {
+        Schema::create('main_product_user', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('main_product_id');
@@ -28,6 +28,6 @@ class CreateMainProductUserPivotsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('main_cart_product');
+        Schema::dropIfExists('main_product_user');
     }
 }
