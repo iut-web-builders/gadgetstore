@@ -89,3 +89,6 @@ Route::get('/main/products/{product}/remove',[MainProductsController::class,'rem
 Route::get('/main-cart/add/{product}',[MainCartsController::class,'addToCart']);
 Route::get('/main-cart/remove/{product}',[MainCartsController::class,'removeFromCart']);
 
+//main-order
+Route::post('/orders/main/store',[OrdersController::class,'mainCheckOut']);
+

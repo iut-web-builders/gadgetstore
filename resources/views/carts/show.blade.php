@@ -5,8 +5,8 @@
 
     <div class="container" xmlns="http://www.w3.org/1999/html">
         <div class="card">
-            <div class="pb-4"><strong>Products from us:</strong></div>
-            <form action="/orders/store" enctype="multipart/form-data" method="post">
+            <div class="pb-4"><strong><h2>Products from us:</h2></strong></div>
+            <form action="/orders/main/store" enctype="multipart/form-data" method="post">
                 @csrf
                 <table class="table table-hover shopping-cart-wrap">
                     <thead class="text-muted">
@@ -53,10 +53,14 @@
                     </tbody>
 
                 </table>
-                <div><button id="user_cart_btn">@if(count($products)!=0)Checkout and @endif See The Products on The Way</button></div>
+                @if(count($mainProducts)!=0)
+                    <div><button id="main_cart_btn" class="btn form-control btn-outline-primary">Order!</button></div>
+                @else
+                    <h4 class="text-muted">Check out these <a href="/">amazing goods</a>. You will find something worth adding :D </h4>
 
+                @endif
             </form>
-            <div><strong>Products you want to buy from others:</strong></div>
+            <div><strong><h2>Products you want to buy from others:</h2></strong></div>
             <form action="/orders/store" enctype="multipart/form-data" method="post">
                 @csrf
             <table class="table table-hover shopping-cart-wrap">
@@ -104,9 +108,15 @@
                 </tbody>
 
             </table>
+                @if(count($products)!=0)
+                    <div><button id="main_cart_btn" class="btn form-control btn-outline-primary">Order these products from users</button></div>
+                @else
+                    <h4 class="text-muted">Check out these <a href="/from-you">amazing goods</a> from users like you. You will find something worth adding :D </h4>
 
-                <div><button id="main_cart_btn">@if(count($products)!=0)Checkout and @endif See The Products on The Way</button></div>
+                @endif
             </form>
+
+            <div><a href="/orders/show"><button class="btn btn-success form-control">Show My Orders</button></a></div>
 
         </div> <!-- card.// -->
 
