@@ -53,6 +53,8 @@
                     </tbody>
 
                 </table>
+                <div><button id="user_cart_btn">@if(count($products)!=0)Checkout and @endif See The Products on The Way</button></div>
+
             </form>
             <div><strong>Products you want to buy from others:</strong></div>
             <form action="/orders/store" enctype="multipart/form-data" method="post">
@@ -103,8 +105,9 @@
 
             </table>
 
-                <div><button>@if(count($products)!=0)Checkout and @endif See The Products on The Way</button></div>
+                <div><button id="main_cart_btn">@if(count($products)!=0)Checkout and @endif See The Products on The Way</button></div>
             </form>
+
         </div> <!-- card.// -->
 
 
