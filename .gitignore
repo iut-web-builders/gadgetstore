@@ -166,3 +166,9 @@ nohup.out
 _ide_helper_models.php
 .phpstorm.meta.php
 /resources/views/Temp
+
+
+#Don't ignore:
+#use '!' to denote "don't ignore"
+
+!/storage/framework/sessions/sessionsdummy.txt
