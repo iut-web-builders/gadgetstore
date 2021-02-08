@@ -12,6 +12,7 @@ use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfilesController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\UserAdministrationController;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -91,4 +92,8 @@ Route::get('/main-cart/remove/{product}',[MainCartsController::class,'removeFrom
 
 //main-order
 Route::post('/orders/main/store',[OrdersController::class,'mainCheckOut']);
+
+
+//user-administration
+Route::get('/mod/administrate/users',[UserAdministrationController::class,'show']);
 
