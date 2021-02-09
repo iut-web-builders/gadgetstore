@@ -67,6 +67,19 @@ class User extends Authenticatable
         return $this->belongsToMany(MainProduct::class)->withPivot('quantity');
     }
 
+    public static function boot()
+    {
+        parent::boot();
+        static::deleting(function ($user){
+            $user->profile()->delete();
+            $user->products()->delete();
+            $user->orders()->delete();
+            $user->mainOrders()->delete();
+            $user->cart()->delete();
+            $user->mainCart()->delete();
+        });
+    }
+
 
 
 }

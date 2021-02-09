@@ -99,5 +99,6 @@ Route::post('/orders/main/store',[OrdersController::class,'mainCheckOut']);
 //user-administration
 Route::get('/mod/administrate/users',[UserAdministrationController::class,'show']);
 Route::get('/mod/administrate/users/{mod}/approve',[UserAdministrationController::class,'approve']);
-Route::get('/mod/administrate/users/{mod}/delete',[UserAdministrationController::class,'delete']);
+Route::get('/mod/administrate/users/{mod}/delete',[UserAdministrationController::class,'deleteMod']);
+Route::get('/mod/administrate/general-users/{user}/delete',[UserAdministrationController::class,'deleteUser']);
 

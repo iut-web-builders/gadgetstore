@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mod;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserAdministrationController extends Controller
@@ -16,7 +17,8 @@ class UserAdministrationController extends Controller
 
     public function show(){
         $mods= Mod::all();
-        return view('mod/administrate/users/show',compact('mods'));
+        $users=User::all();
+        return view('mod/administrate/users/show',compact('mods','users'));
     }
 
     public function makeAdmin(){
@@ -31,7 +33,7 @@ class UserAdministrationController extends Controller
 
     }
 
-    public function delete(Mod $mod){
+    public function deleteMod(Mod $mod){
         try {
             $mod->delete();
         } catch (\Exception $e) {
@@ -39,8 +41,19 @@ class UserAdministrationController extends Controller
         }
         return redirect()->back();
 
+    }
+
+    public function deleteUser(User $user){
+        try {
+            $user->delete();
+        } catch (\Exception $e) {
+            dd($e);
+        }
+        return redirect()->back();
 
     }
+
+
 
 
 

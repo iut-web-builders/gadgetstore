@@ -52,5 +52,39 @@
             </table>
 
 
+            <table class="table table-hover shopping-cart-wrap">
+                <thead class="text-muted">
+                <tr>
+                    <th scope="col">User</th>
+                    <th scope="col" width="120">Remove</th>
+                </tr>
+                @foreach($users as $user)
+
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <figure class="media">
+                            <div class="img-wrap pr-3"><img src="/storage/{{$user->profile->image}}" style="height: 75px; width: 75px" class="img-thumbnail img-sm" alt=""></div>
+                            <figcaption class="media-body">
+                                <h6 class="title text-truncate">{{$user->name}}</h6>
+                                <dl class="param param-inline small">
+                                    <dt>From </dt>
+                                    <dd>{{$user->profile->address}}</dd>
+                                </dl>
+                            </figcaption>
+                        </figure>
+                    </td>
+
+                    <td class="text-right">
+                        <a href="general-users/{{$user->id}}/delete" class="btn btn-outline-danger"> × Remove</a>
+                    </td>
+                </tr>
+                @endforeach
+
+                </tbody>
+            </table>
+
+
 
 @endsection
