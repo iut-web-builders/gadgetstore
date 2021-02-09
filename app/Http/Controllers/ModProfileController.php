@@ -9,6 +9,7 @@ class ModProfileController extends Controller
     public function __construct()
     {
         $this->middleware('auth:mod');
+        $this->middleware('approval');
     }
 
     public function home(){

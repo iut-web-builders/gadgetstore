@@ -9,4 +9,5 @@ class Approve extends Model
 {
     use HasFactory;
 
+
 }

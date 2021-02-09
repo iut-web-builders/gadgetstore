@@ -66,7 +66,9 @@ Route::get('/register/mod', [RegisterController::class,'showModRegistrationForm'
 
 
 Route::post('/login/mod', [LoginController::class,'modLogin']);
-
+Route::get('/needs-approval',function (){
+    return view('/mod/needs-approval');
+})->name('needs-approval');
 Route::post('/register/mod', [RegisterController::class,'createMod']);
 
 
@@ -96,4 +98,5 @@ Route::post('/orders/main/store',[OrdersController::class,'mainCheckOut']);
 
 //user-administration
 Route::get('/mod/administrate/users',[UserAdministrationController::class,'show']);
+Route::get('/mod/administrate/users/{mod}/approve',[UserAdministrationController::class,'approve']);
 

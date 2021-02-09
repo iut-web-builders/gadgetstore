@@ -32,4 +32,8 @@ class Mod extends Authenticatable
     }
 
 
+    public function approval(){
+        return $this->hasOne(Approve::class);
+    }
+
 }

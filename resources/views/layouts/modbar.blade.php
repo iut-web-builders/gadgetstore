@@ -73,6 +73,7 @@
     <a href="/settings/my-products">My Products</a>
     <a href="/home">Home</a>
     <a href="/">Store</a>
+    <a href="/mod/administrate/users">Users</a>
     <a href="{{ route('logout') }}"
            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             Log out

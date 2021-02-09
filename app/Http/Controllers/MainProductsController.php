@@ -78,6 +78,8 @@ class MainProductsController extends Controller
      */
     public function edit(MainProduct $product)
     {
+        $this->middleware('auth:mod');
+        $this->middleware('approval');
         return view('/mod/products/edit',compact('product'));
     }
 

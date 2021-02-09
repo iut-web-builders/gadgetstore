@@ -32,7 +32,7 @@
                         </figure>
                     </td>
                     <td>
-                        <div>Approval</div>
+                        <a href="users/{{$user->id}}/approve" class="btn btn-outline-success"> Approve </a>
                     </td>
                     <td>
                         <div class="price-wrap">

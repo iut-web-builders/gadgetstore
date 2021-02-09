@@ -15,6 +15,8 @@ class CreateApprovesTable extends Migration
     {
         Schema::create('approves', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('mod_id');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

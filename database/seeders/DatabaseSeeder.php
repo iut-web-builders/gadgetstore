@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Approve;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\User;
@@ -56,6 +57,9 @@ class DatabaseSeeder extends Seeder
             'image' => 'images/b (' . rand(1, 35) . ').jpg',
             'contact_number' => rand(100000000, 1000000000),
             'mod_id' => $modNumber,
+        ]);
+        DB::table('approves')->insert([
+            'mod_id' =>$modNumber,
         ]);
     }
 

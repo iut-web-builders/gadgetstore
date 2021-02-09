@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Approve;
 use App\Models\Cart;
 use App\Models\Customer;
 use App\Models\MainCart;
@@ -105,7 +106,9 @@ class RegisterController extends Controller
         $modProfile['mod_id'] = $mod['id'];
         $modProfile->save();
 
-
+        Approve::create([
+            'mod_id'=>$mod['id']
+        ]);
 
         return redirect()->intended('login/mod');
     }
