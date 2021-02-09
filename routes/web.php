@@ -101,4 +101,15 @@ Route::get('/mod/administrate/users',[UserAdministrationController::class,'show'
 Route::get('/mod/administrate/users/{mod}/approve',[UserAdministrationController::class,'approve']);
 Route::get('/mod/administrate/users/{mod}/delete',[UserAdministrationController::class,'deleteMod']);
 Route::get('/mod/administrate/general-users/{user}/delete',[UserAdministrationController::class,'deleteUser']);
+Route::get('/mod/administrate/category/{category}/delete',[CategoryController::class,'destroy']);
+
+//Classifications
+Route::get('/mod/administrate/classifications',function (){
+
+    $categories= \App\Models\Category::all();
+    $brands = \App\Models\Brand::all();
+    return view('mod/administrate/classification/show',compact('categories','brands'));
+})->middleware(['auth:mod','approval']);
+Route::get('/mod/administrate/category/{category}/delete',[CategoryController::class,'destroy'])->middleware(['auth:mod','approval']);;
+Route::get('/mod/administrate/brand/{brand}/delete',[BrandController::class,'destroy'])->middleware(['auth:mod','approval']);;
 

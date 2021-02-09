@@ -83,7 +83,11 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $this->middleware('auth');
+        $this->middleware('approval');
+        $category->delete();
+        return redirect()->back();
+
     }
 
 

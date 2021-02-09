@@ -9,6 +9,10 @@ class Category extends Model
 {
     use HasFactory;
 
+    protected $primaryKey='name';
+    public $incrementing = false;
+    protected $keyType='string';
+
 
     public function products(){
         return $this->belongsToMany(Product::class,'product_id');

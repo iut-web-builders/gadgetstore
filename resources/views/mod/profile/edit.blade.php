@@ -1,4 +1,4 @@
-@extends('layouts.sidebar')
+@extends('layouts.modbar')
 @section('content')
     <div class="container">
         <form action="/mod/{{$profile->id}}" enctype="multipart/form-data" method="post">

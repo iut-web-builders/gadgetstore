@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
@@ -75,11 +76,15 @@ class BrandController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  Brand $brand
+     *
      */
-    public function destroy($id)
+    public function destroy(Brand $brand)
     {
-        //
+        $this->middleware('auth');
+        $this->middleware('approval');
+        $brand->delete();
+        return redirect()->back();
+
     }
 }
