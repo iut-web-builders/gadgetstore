@@ -69,7 +69,7 @@
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="#">Edit Authentication</a>
-    <a href="#">Edit Profile</a>
+    <a href="/mod/1/edit">Edit Profile</a>
     <a href="/settings/my-products">My Products</a>
     <a href="/home">Home</a>
     <a href="/">Store</a>

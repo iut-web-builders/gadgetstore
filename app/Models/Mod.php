@@ -36,4 +36,14 @@ class Mod extends Authenticatable
         return $this->hasOne(Approve::class);
     }
 
+    public static function boot()
+    {
+        parent::boot();
+        static::deleting(function ($mod){
+            $mod->profile()->delete();
+            $mod->products()->delete();
+            $mod->approval()->delete();
+        });
+    }
+
 }

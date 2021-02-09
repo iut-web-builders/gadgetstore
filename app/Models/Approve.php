@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Approve extends Model
 {
     use HasFactory;
-
+    protected $fillable=['mod_id'];
 
 }

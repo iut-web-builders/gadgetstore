@@ -17,7 +17,7 @@
 
                 <div class="pt-4 font-weight-bold">Title</div>
                 <div>Description</div>
-                <div> <a href="/profiles/{{$user->id}}/edit">Settings</a></div>
+                <div> <a href="/mod/{{$user->id}}/edit">Settings</a></div>
             </div>
         </div>
         <div class="row pt-5" >

@@ -95,11 +95,15 @@ class RegisterController extends Controller
 
     protected function createMod(Request $request )
     {
-        $this->validator($request->all())->validate();
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:64'],
+            'email' => ['required', 'string', 'email', 'max:64', 'unique:mods'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
         $mod = Mod::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
 
         ]);
         $modProfile = new ModProfile();

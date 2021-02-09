@@ -32,7 +32,10 @@
                         </figure>
                     </td>
                     <td>
+                        @if($user->approval->status==false)
                         <a href="users/{{$user->id}}/approve" class="btn btn-outline-success"> Approve </a>
+                        @else <div>Approved</div>
+                        @endif
                     </td>
                     <td>
                         <div class="price-wrap">
@@ -40,7 +43,7 @@
                         </div> <!-- price-wrap .// -->
                     </td>
                     <td class="text-right">
-                        <a href="#" class="btn btn-outline-danger"> × Remove</a>
+                        <a href="users/{{$user->id}}/delete" class="btn btn-outline-danger"> × Remove</a>
                     </td>
                 </tr>
                 @endforeach
