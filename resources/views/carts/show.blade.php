@@ -36,7 +36,7 @@
                         <td>
                             <label>
                                 <input type="hidden" name="cart_product_id[]"  value="{{$product->id}}" >
-                                <input  type="number" name="cart_product_quantity[]" value="1" class="form-control" min="1" max="100">
+                                <input  type="number" name="cart_product_quantity[]" value="0" class="form-control" min="0" max="{{$product->stock}}">
                             </label>
                         </td>
                         <td>
@@ -45,7 +45,7 @@
                             </div> <!-- price-wrap .// -->
                         </td>
                         <td class="text-right">
-                            <a href="/carts/remove/{{$product->id}}" class="btn btn-outline-danger"> × Remove</a>
+                            <a href="/main-cart/remove/{{$product->id}}" class="btn btn-outline-danger"> × Remove</a>
                         </td>
                     </tr>
                     @endforeach
@@ -91,7 +91,7 @@
                     <td>
                         <label>
                             <input type="hidden" name="cart_product_id[]"  value="{{$product->id}}" >
-                            <input  type="number" name="cart_product_quantity[]" value="1" class="form-control" min="1" max="100">
+                            <input  type="number" name="cart_product_quantity[]" value="0" class="form-control" min="0" max="{{$product->stock}}">
                         </label>
                     </td>
                     <td>

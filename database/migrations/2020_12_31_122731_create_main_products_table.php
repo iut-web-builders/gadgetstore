@@ -24,7 +24,7 @@ class CreateMainProductsTable extends Migration
             $table->string('brand');
             $table->string('category');
             $table->unsignedInteger('mod_id');
-
+            $table->unsignedBigInteger('stock')->default(0);
             $table->index('mod_id');
         });
     }

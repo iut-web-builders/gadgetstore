@@ -70,6 +70,27 @@
                     </div>
 
 
+                    <!--Stock-->
+                    <div class="form-group row">
+                        <label for="stock" class="col-md-4 col-form-label">Stock</label>
+
+
+                        <input id="stock"
+                               type="number"
+                               min="0"
+                               class="form-control @error('price') is-invalid @enderror"
+                               name="stock"
+                               value="{{$product->stock}}"
+                               autocomplete="stock" autofocus>
+
+                        @error('price')
+                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                        @enderror
+
+                    </div>
+
+
+
                     <!--category-->
                     <div class="form-group row">
                         <label for="category" class="col-md-4 col-form-label">Category</label>

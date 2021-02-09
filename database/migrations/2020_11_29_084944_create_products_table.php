@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->unsignedInteger('point');
             $table->string('brand');
             $table->string('category');
+            $table->unsignedBigInteger('stock')->default(0);
 
             $table->unsignedInteger('user_id');
 

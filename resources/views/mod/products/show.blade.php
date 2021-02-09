@@ -22,7 +22,8 @@
                 <hr>
                 <p>
             <span class="font-weight-bold">
-                    <span class="text-dark">{{$product->name}}</span>
+                    <span class="text-dark">{{$product->name}}</span><br/>
+                    <span class="text-muted">{{$product->stock}} products left.</span>
             </span>
                 </p>
                 <hr>

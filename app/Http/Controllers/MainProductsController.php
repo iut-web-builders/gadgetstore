@@ -42,6 +42,7 @@ class MainProductsController extends Controller
             'brand'=> ['max:50'],
             'category'=>['max:50'],
             'image' => ['image','required'],
+            'stock' =>['min:1','numeric'],
         ];
         $data = $request->validate($validationTemplate);
         $imagePath = request('image')->store('images','public');
@@ -99,6 +100,7 @@ class MainProductsController extends Controller
             'brand'=> ['max:50'],
             'category'=>['max:50'],
             'image' => ['image'],
+            'stock' =>['numeric'],
         ];
         $data = $request->validate($validationTemplate);
 
