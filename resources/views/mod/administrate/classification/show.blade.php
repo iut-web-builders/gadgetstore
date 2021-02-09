@@ -28,8 +28,25 @@
             </tr>
             @endforeach
 
+
+
             </tbody>
         </table>
+        <form action="category/add" id = "category-form" enctype="multipart/form-data" method="post">
+            @csrf
+            <table class="table table-hover shopping-cart-wrap">
+
+                <tr>
+                    <td>
+                        <input type="text" name="name" form="category-form">
+                    </td>
+                    <td class="text-right">
+                        <button class="btn btn-outline-success" form="category-form"> ✔ Add</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
     </div>
 
 
@@ -60,6 +77,20 @@
 
             </tbody>
         </table>
+        <form action="brand/add" id = "brand-form" enctype="multipart/form-data" method="post">
+            @csrf
+            <table class="table table-hover shopping-cart-wrap">
+
+                <tr>
+                    <td>
+                        <input type="text" name="name" form="brand-form">
+                    </td>
+                    <td class="text-right">
+                        <button class="btn btn-outline-success" form="brand-form"> ✔ Add</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
     </div>
 </div>
 

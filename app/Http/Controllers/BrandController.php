@@ -31,11 +31,15 @@ class BrandController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     *
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name'=>['max:64','required'],
+        ]);
+        Brand::create($data);
+        return redirect()->back();
     }
 
     /**

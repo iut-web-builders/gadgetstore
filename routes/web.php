@@ -112,4 +112,5 @@ Route::get('/mod/administrate/classifications',function (){
 })->middleware(['auth:mod','approval']);
 Route::get('/mod/administrate/category/{category}/delete',[CategoryController::class,'destroy'])->middleware(['auth:mod','approval']);;
 Route::get('/mod/administrate/brand/{brand}/delete',[BrandController::class,'destroy'])->middleware(['auth:mod','approval']);;
-
+Route::post('/mod/administrate/category/add',[CategoryController::class,'store'])->middleware(['auth:mod','approval']);
+Route::post('/mod/administrate/brand/add',[BrandController::class,'store'])->middleware(['auth:mod','approval']);

@@ -13,7 +13,7 @@ class Category extends Model
     public $incrementing = false;
     protected $keyType='string';
 
-
+    protected $fillable=['name'];
     public function products(){
         return $this->belongsToMany(Product::class,'product_id');
     }
