@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MainProduct;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class OrdersController extends Controller
@@ -16,26 +18,35 @@ class OrdersController extends Controller
        // dd(\request()->request);
         $user = auth()->user();
         $cartData = \request()->validate([
-            "cart_product_id.*" => ['numeric','gt:0'],
-            "cart_product_quantity.*" => ['numeric','gt:0']
+            "cart_product_id.*" => ['numeric','gt:-1'],
+            "cart_product_quantity.*" => ['numeric','gt:-1']
         ]);
         $returnLocation = redirect()->back();
         if($cartData == null) return  $returnLocation;
         $cartData = $this->createDataFromInput($cartData);
 
         foreach ($cartData as $cartDatum) {
+            $cartProduct=  Product::all()->find($cartDatum['product']);
+            if($cartProduct->stock==0) continue;
+            if($cartProduct->stock<$cartDatum['quantity']){
+                $quantity = $cartProduct->stock;
+            }
+            else $quantity = $cartDatum['quantity'];
             if(!$user->orders->contains($cartDatum['product'])) {
                 $user->orders()->attach($cartDatum['product'], [
-                    'quantity' => $cartDatum['quantity'],
+                    'quantity' => $quantity,
                 ]);
 
             }
             else
             {
                 $pivot = auth()->user()->orders()->where('product_id',$cartDatum['product'])->first()->pivot;
-                $pivot['quantity']+= $cartDatum['quantity'];
+                $pivot['quantity']+= $quantity;
                 $pivot->save();
             }
+            $cartProduct->stock-=$quantity;
+            $cartProduct->save();
+
             $user->cart->products()->detach($cartDatum['product']);
         }
 
@@ -51,6 +62,10 @@ class OrdersController extends Controller
         if($user->mainOrders->first()!=null)
             $orderedMainProducts = auth()->user()->mainOrders;
         return view('orders/show',compact('orderedProducts','orderedMainProducts'));
+    }
+
+    public function showOrderOperateView(){
+
     }
 
 
@@ -85,30 +100,42 @@ class OrdersController extends Controller
 
 
     function mainCheckOut(){
+
         $returnLocation = redirect()->back();
         $user = auth()->user();
+
         $cartData = \request()->validate([
-            "cart_product_id.*" => ['numeric','gt:0'],
-            "cart_product_quantity.*" => ['numeric','gt:0']
+            "cart_product_id.*" => ['numeric','gt:-1'],
+            "cart_product_quantity.*" => ['numeric','gt:-1']
         ]);
+
         if($cartData == null) return  $returnLocation;
 
         $cartData = $this->createDataFromInput($cartData);
 
+
         foreach ($cartData as $cartDatum) {
+            $cartProduct = MainProduct::all()->find($cartDatum['product']);
+            if($cartProduct->stock==0) {continue;}
+            if($cartProduct->stock<$cartDatum['quantity']){
+                $quantity = $cartProduct->stock;
+            }
+            else $quantity = $cartDatum['quantity'];
             if(!$user->mainOrders->contains($cartDatum['product'])) {
                 $user->mainOrders()->attach($cartDatum['product'], [
-                    'quantity' => $cartDatum['quantity'],
+                    'quantity' => $quantity,
                 ]);
 
             }
             else
             {
                 $pivot = auth()->user()->mainOrders()->where('main_product_id',$cartDatum['product'])->first()->pivot;
-                $pivot['quantity']+= $cartDatum['quantity'];
+                $pivot['quantity']+= $quantity;
                 $pivot->save();
             }
             $user->mainCart->products()->detach($cartDatum['product']);
+            $cartProduct->stock-=$quantity;
+            $cartProduct->save();
         }
 
         return $returnLocation;

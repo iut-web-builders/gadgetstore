@@ -36,7 +36,7 @@
                         <td>
                             <label>
                                 <input type="hidden" name="cart_product_id[]"  value="{{$product->id}}" >
-                                <input  type="number" name="cart_product_quantity[]" value="0" class="form-control" min="0" max="{{$product->stock}}">
+                                <input  type="number" name="cart_product_quantity[]" value="0" class="form-control" min="0" max="{{($product->stock)}}">
                             </label>
                         </td>
                         <td>

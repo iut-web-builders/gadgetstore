@@ -3,7 +3,7 @@
 
     <div class="container" xmlns="http://www.w3.org/1999/html">
         <div class="card">
-            <div><strong>Your Products:</strong></div>
+            <div><strong>Orders</strong></div>
                 <table class="table table-hover shopping-cart-wrap">
                     <thead class="text-muted">
 

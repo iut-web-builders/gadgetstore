@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Approve;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Mod;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -23,11 +24,15 @@ class DatabaseSeeder extends Seeder
         for ($i = 1; $i <= 30; $i++) {
             $this->seedUser($i);
             $this->seedMod($i);
+
             $this->seedProfiles($i);
             $this->seedProducts($i);
 
 
         }
+        $m=Mod::all()[0];
+        $m->approval->status=true;
+        $m->approval->save();
     }
 
     protected function seedUser($userNumber): void
@@ -83,6 +88,7 @@ class DatabaseSeeder extends Seeder
             'category' => Category::all()[rand(0, 4)]->name,
             'brand' => Brand::all()[rand(0, 4)]->name,
             'point' => rand(1, 100),
+            'stock'=>rand(0,20),
         ];
         $userData = $data;
         $userData['user_id'] =rand(1, 30);

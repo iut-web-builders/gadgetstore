@@ -72,6 +72,7 @@
     <a href="/mod/1/edit">Edit Profile</a>
     <a href="/settings/my-products">My Products</a>
     <a href="/mod/administrate/classifications">Classifications</a>
+    <a href="/mod/operations/orders">Orders</a>
     <a href="/home">Home</a>
     <a href="/">Store</a>
     <a href="/mod/administrate/users">Users</a>
