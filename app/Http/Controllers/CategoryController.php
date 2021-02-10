@@ -53,7 +53,8 @@ class CategoryController extends Controller
     {
 
         $products = \DB::table('products')->where('category',$category)->get();
-        return view(("categories/show"),compact('products'));
+        $mainProducts = \DB::table('main_products')->where('category',$category)->get();
+        return view(("categories/show"),compact('products','mainProducts'));
     }
 
     /**
