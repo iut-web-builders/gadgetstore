@@ -10,7 +10,7 @@
                     <th scope="col">Product</th>
                     <th scope="col" width="120">Quantity</th>
                     <th scope="col" width="120">Price</th>
-                    <th scope="col" width="200" class="text-right">To</th>
+                    <th scope="col" width="200" class="text-right">Destination</th>
                 </tr>
                 </thead>
                 @foreach($mainOrders as $order)
@@ -55,7 +55,7 @@
 
             </table>
         </div> <!-- card.// -->
-
+        <br>
 
         <div class="card">
             <div><strong>Ordered from user</strong></div>
@@ -65,8 +65,8 @@
                             <th scope="col">Product</th>
                             <th scope="col" width="120">Quantity</th>
                             <th scope="col" width="120">Price</th>
-                            <th scope="col" width="200" class="text-right">From</th>
-                            <th scope="col" width="200" class="text-right">To</th>
+                            <th scope="col" width="200" class="text-right">Source</th>
+                            <th scope="col" width="200" class="text-right">Destination</th>
                         </tr>
                     </thead>
                     @foreach($orders as $order)
