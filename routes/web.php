@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MainCartsController;
 use App\Http\Controllers\MainProductsController;
 use App\Http\Controllers\ModProfileController;
+use App\Http\Controllers\OrderAdministrationController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfilesController;
@@ -120,3 +121,7 @@ Route::get('/mod/{mod}/make-admin',[UserAdministrationController::class,'makeAdm
 
 //Search
 Route::post('/search',[\App\Http\Controllers\SearchController::class,'makeSearch']);
+
+
+//OrderAdministration
+Route::get('/mod/operations/orders',[OrderAdministrationController::class,'showOrders']);
