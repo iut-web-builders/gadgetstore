@@ -51,7 +51,8 @@ class BrandController extends Controller
     public function show(string  $brand)
     {
         $products = \DB::table('products')->where('brand',$brand)->get();
-        return view(("brands/show"),compact('products'));
+        $mainProducts = \DB::table('main_products')->where('brand',$brand)->get();
+        return view(("brands/show"),compact('products','mainProducts'));
     }
 
     /**
