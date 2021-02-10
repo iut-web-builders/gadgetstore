@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.modbar')
 
 @section('content')
     <!--Section: Block Content-->
@@ -39,7 +39,13 @@
                     </td>
                     <td>
                         <div class="price-wrap">
-                            <var class="price">Is Admin</var>
+                            <var class="price">
+                                @if($user['is_admin'])
+                                    Yes
+                                @else
+                                    <a class="btn-outline-success btn" href="/mod/{{$user->id}}/make-admin">Make Admin</a>
+                                @endif
+                            </var>
                         </div> <!-- price-wrap .// -->
                     </td>
                     <td class="text-right">

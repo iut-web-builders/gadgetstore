@@ -21,11 +21,19 @@ class UserAdministrationController extends Controller
         return view('mod/administrate/users/show',compact('mods','users'));
     }
 
-    public function makeAdmin(){
-
+    public function makeAdmin(Mod $mod){
+        if(!auth('mod')->user()['is_admin']==true){
+            return redirect()->back();
+        }
+        $mod['is_admin']=true;
+        $mod->save();
+        return redirect()->back();
     }
 
     public function approve(Mod $mod){
+        if(!auth('mod')->user()['is_admin']==true){
+            return redirect()->back();
+        }
         $mod['approval']->status = true;
         $mod['approval']->save();
         return redirect()->back();

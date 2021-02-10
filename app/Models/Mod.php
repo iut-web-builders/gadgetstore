@@ -16,7 +16,7 @@ class Mod extends Authenticatable
     protected $guard = 'mod';
 
     protected $fillable = [
-        'name','email','password',
+        'name','email','password','is_admin',
     ];
 
     protected $hidden = [
