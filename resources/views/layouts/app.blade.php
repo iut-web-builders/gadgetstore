@@ -105,8 +105,11 @@
                         </li>
                         <li>
                             <div>
-                                <input type="text-area" placeholder="search"
-                                ><input type="button" value="🔍" >
+                                <form action="/search" id = "search-form" enctype="multipart/form-data" method="post">
+                                    @csrf
+                                <input type="text-area" name="searchValue" placeholder="search" form="search-form"
+                                ><button form="search-form" >🔍</button>
+                                </form>
                             </div>
 
                         </li>

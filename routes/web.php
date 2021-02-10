@@ -117,3 +117,6 @@ Route::post('/mod/administrate/brand/add',[BrandController::class,'store'])->mid
 
 
 Route::get('/mod/{mod}/make-admin',[UserAdministrationController::class,'makeAdmin']);
+
+//Search
+Route::post('/search',[\App\Http\Controllers\SearchController::class,'makeSearch']);

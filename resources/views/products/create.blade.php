@@ -134,7 +134,7 @@
                         @enderror
                     </div>
                     <div class="row pt-4">
-                        <button class="btn btn-primary form-control">Add new Post</button>
+                        <button class="btn btn-primary form-control">Add new Product</button>
                     </div>
 
 
